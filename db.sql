@@ -65,6 +65,13 @@ CREATE TABLE IF NOT EXISTS Book (
 );
 
 
+CREATE TABLE IF NOT EXISTS Author (
+    book VARCHAR(13),
+    name VARCHAR(100),
+    PRIMARY KEY (book, name),
+    FOREIGN KEY (book) REFERENCES Book (ISBN)
+);
+
 
 
 
