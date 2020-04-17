@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS Transaction (
     TID CHAR(4) PRIMARY KEY,
     cashier CHAR(4) NOT NULL,
     FOREIGN KEY (cashier) REFERENCES Employee (EID),
-    FOREIGN KEY (TID) REFERENCES Transaction (TID)
+    FOREIGN KEY (TID) REFERENCES Merchandise (transaction)
 );
 
 
