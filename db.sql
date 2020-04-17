@@ -56,6 +56,15 @@ CREATE TABLE IF NOT EXISTS Supervise (
 
 
 
+CREATE TABLE IF NOT EXISTS Book (
+    ISBN VARCHAR(13) PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    genre VARCHAR(20),
+    price DECIMAL(5,2) NOT NULL,
+    publisher VARCHAR(100)
+);
+
+
 
 
 
