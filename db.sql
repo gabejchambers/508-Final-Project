@@ -1,1 +1,8 @@
 #Starts here!
+
+CREATE TABLE IF NOT EXISTS Store(
+    SID CHAR(12) PRIMARY KEY,
+    Address VARCHAR(100),
+    Manager CHAR(12) NOT NULL UNIQUE,
+    FOREIGN KEY (Manager) REFERENCES Employee(EID)
+);
