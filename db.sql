@@ -99,6 +99,7 @@ CREATE TABLE IF NOT EXISTS Inventory (
 #Queries:
 
 #Search for a book by ISBN at a specific store
+/*
 DELIMITER //
 CREATE FUNCTION getQuantityFromISBNLocation(p_ISBN VARCHAR(13), p_SID CHAR(4)) RETURNS tinyint
 BEGIN
@@ -111,6 +112,7 @@ BEGIN
     RETURN r_quantity;
 END//
 DELIMITER ;
+ */
 
 
 
