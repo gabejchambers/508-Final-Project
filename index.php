@@ -1,5 +1,5 @@
 <?php
-    phpinfo();
+    #phpinfo();
 
     $servername = "3.234.246.29";
     $username = "project_15";
