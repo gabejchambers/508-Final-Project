@@ -14,6 +14,14 @@ CREATE TABLE IF NOT EXISTS Employee (
     location CHAR(12),
     name VARCHAR(100),
     salary DECIMAL(8,2) NOT NULL,
-    Address VARCHAR(100),
+    address VARCHAR(100),
     FOREIGN KEY (location) REFERENCES Store (SID)
+);
+
+
+CREATE TABLE IF NOT EXISTS Employee (
+    email VARCHAR(20) PRIMARY KEY,
+    pwhash CHAR(32) NOT NULL,
+    name VARCHAR(100),
+    address VARCHAR(100)
 );
