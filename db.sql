@@ -73,6 +73,15 @@ CREATE TABLE IF NOT EXISTS Author (
 );
 
 
+CREATE TABLE IF NOT EXISTS Inventory (
+    store CHAR(4),
+    book VARCHAR(13),
+    quantity tinyint NOT NULL DEFAULT 0,
+    PRIMARY KEY(store, book),
+    FOREIGN KEY (book) REFERENCES Book(ISBN),
+    FOREIGN KEY (store) REFERENCES Store(SID)
+);
+
 
 
 
