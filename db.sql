@@ -40,6 +40,8 @@ CREATE TABLE IF NOT EXISTS Customer_Transactions (
 CREATE TABLE IF NOT EXISTS Transaction (
     TID CHAR(4) PRIMARY KEY,
     cashier CHAR(4) NOT NULL,
+    customer varchar(20),
+    FOREIGN KEY (customer) REFERENCES Customer(email),
     FOREIGN KEY (cashier) REFERENCES Employee (EID),
     FOREIGN KEY (TID) REFERENCES Merchandise (transaction)
 );
@@ -94,22 +96,7 @@ CREATE TABLE IF NOT EXISTS Inventory (
 
 
 
-#Functions:
-
-/* Skeleton:
-DELIMITER //
-CREATE FUNCTION fname(param datatype) RETURNS datatype
-BEGIN
-    DECLARE var datatype;
-
-    SELECT attribute INTO var
-    FROM
-    WHERE ;
-
-    RETURN var;
-END//
-DELIMITER ;
-*/
+#Queries:
 
 #Search for a book by ISBN at a specific store
 DELIMITER //
