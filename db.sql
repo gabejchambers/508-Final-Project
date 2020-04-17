@@ -94,6 +94,37 @@ CREATE TABLE IF NOT EXISTS Inventory (
 
 
 
+#Functions:
+
+/* Skeleton:
+DELIMITER //
+CREATE FUNCTION fname(param datatype) RETURNS datatype
+BEGIN
+    DECLARE var datatype;
+
+    SELECT attribute INTO var
+    FROM
+    WHERE ;
+
+    RETURN var;
+END//
+DELIMITER ;
+*/
+
+#Search for a book by ISBN at a specific store
+DELIMITER //
+CREATE FUNCTION getQuantityFromISBNLocation(p_ISBN VARCHAR(13), p_SID CHAR(4)) RETURNS tinyint
+BEGIN
+    DECLARE r_quantity tinyint;
+
+    SELECT i.quantity INTO r_quantity
+    FROM Inventory i
+    WHERE p_ISBN = i.book AND p_SID = i.store;
+
+    RETURN r_quantity;
+END//
+DELIMITER ;
+
 
 
 
