@@ -1,7 +1,7 @@
 <?php
     #phpinfo();
 
-    $servername = "3.234.246.29";
+    $servername = "http://3.234.246.29/~project_15/508-Final-Project/index.php";
     $username = "project_15";
     $password = "V00827834";
 
