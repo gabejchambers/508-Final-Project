@@ -37,12 +37,21 @@ CREATE TABLE IF NOT EXISTS Customer_Transactions (
 );
 
 
-
 CREATE TABLE IF NOT EXISTS Transaction (
     TID CHAR(4) PRIMARY KEY,
     cashier CHAR(4) NOT NULL,
     FOREIGN KEY (cashier) REFERENCES Employee (EID),
     FOREIGN KEY (TID) REFERENCES Transaction (TID)
+);
+
+
+CREATE TABLE Merchandise (
+    transaction char(4),
+    MID char(4),
+    book varchar(13) NOT NULL,
+    PRIMARY KEY(transaction, MID),
+    FOREIGN KEY (book) REFERENCES Book(ISBN),
+    FOREIGN KEY (transaction) REFERENCES Transaction(TID)
 );
 
 
@@ -81,8 +90,6 @@ CREATE TABLE IF NOT EXISTS Inventory (
     FOREIGN KEY (book) REFERENCES Book(ISBN),
     FOREIGN KEY (store) REFERENCES Store(SID)
 );
-
-
 
 
 
