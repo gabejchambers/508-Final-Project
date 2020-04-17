@@ -19,9 +19,44 @@ CREATE TABLE IF NOT EXISTS Employee (
 );
 
 
-CREATE TABLE IF NOT EXISTS Employee (
+CREATE TABLE IF NOT EXISTS Customer (
     email VARCHAR(20) PRIMARY KEY,
     pwhash CHAR(32) NOT NULL,
     name VARCHAR(100),
     address VARCHAR(100)
 );
+
+
+
+CREATE TABLE IF NOT EXISTS Customer_Transactions (
+    email VARCHAR(20),
+    TID CHAR(12),
+    PRIMARY KEY (email, TID),
+    FOREIGN KEY (email) REFERENCES Customer (email),
+    FOREIGN KEY (TID) REFERENCES Transaction (TID)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
