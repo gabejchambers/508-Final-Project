@@ -13,4 +13,5 @@
         die("Connection failed: " . $conn->connect_error);
     }
     echo "Connected successfully";
+    echo "what it do boy";
 ?>
