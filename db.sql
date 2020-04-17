@@ -38,6 +38,15 @@ CREATE TABLE IF NOT EXISTS Customer_Transactions (
 
 
 
+CREATE TABLE IF NOT EXISTS Transaction (
+    TID CHAR(12) PRIMARY KEY,
+    cashier CHAR(12) NOT NULL,
+    FOREIGN KEY (cashier) REFERENCES Employee (EID),
+    FOREIGN KEY (TID) REFERENCES Transaction (TID)
+);
+
+
+
 
 
 
