@@ -16,7 +16,7 @@
     echo "Connected successfully\n";
     echo "what it do boy";
 
-
+/* This worked!
     $sql = "INSERT INTO Employee 
         VALUES ('5656', '372e25f23b5a8ae33c5ba203412ace30', '1600', 'Hannah', 400.00, '12 Your Street')";
     if (mysqli_query($conn, $sql)) {
@@ -24,6 +24,7 @@
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
+*/
 
     mysqli_close($conn);
 ?>
