@@ -18,19 +18,11 @@
 
 
     $sql = "INSERT INTO Employee 
-        VALUES ('4444', '372e25f23b5a8ae33c7ba203412ace30', '3342', 'Hugo', 3400.00, '1 Your Street')";
+        VALUES ('5656', '372e25f23b5a8ae33c5ba203412ace30', '1600', 'Hannah', 400.00, '12 Your Street')";
     if (mysqli_query($conn, $sql)) {
         echo "New record created successfully";
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
-
-
-    $sql2 = "INSERT INTO Store VALUES ('3342', '321 North Street', '4444')";
-    if (mysqli_query($conn, $sql2)) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
     }
 
     mysqli_close($conn);
