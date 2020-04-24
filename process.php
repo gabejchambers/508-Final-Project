@@ -26,8 +26,12 @@ if ($conn->connect_error) {
     }
 */
 
-$result = $_GET['data'];
-echo $result;
+$fromform = $_GET['data'];
+if ($fromform) {
+    echo $fromform;
+    echo "";
+}
+
 
 #Query w php:
 $sql = "SELECT name, salary FROM Employee WHERE EID = 5656";
