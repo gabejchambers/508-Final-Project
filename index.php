@@ -5,7 +5,11 @@
 </head>
 <body>
 <div>This is pure HTML message.</div>
-<div>Next, it displays aa PHP mySQLi Query:</div>
+<div>Next, it displays a PHP mySQLi Query:</div>
+<form method="get" name="form" action="index.php">
+    <input type="text" placeholder="Enter Data" name="data">
+    <input type="submit" value="Submit">
+</form>
 <div>
     <?php
     #phpinfo();
@@ -35,6 +39,8 @@
         }
     */
 
+    $result = $_GET['data'];
+    echo $result;
 
     #Query w php:
     $sql = "SELECT name, salary FROM Employee WHERE EID = 5656";
