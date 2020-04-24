@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>How to put PHP in HTML- Date Example</title>
+    <title>Home</title>
 </head>
 <body>
 <div>This is pure HTML message.</div>
-<div>Next, it displays a PHP mySQLi Query:</div>
 <form method="post" name="form" action="index.php">
     <input type="text" placeholder="Enter Data" name="data">
     <input type="submit" value="Submit">
 </form>
-<form method="post" name="form" action="process.php">
-    <input type="text" placeholder="Enter Data" name="data">
-    <input type="submit" value="Submit">
-</form>
+
+<div>Next, it displays a PHP mySQLi Query:</div>
 <div>
     <?php
 
@@ -67,6 +64,11 @@
     ?>
 
 </div>
+<form method="post" name="form" action="process.php">
+    <input type="text" placeholder="Enter Data" name="data">
+    <input type="submit" value="Submit">
+</form>
+<button onclick="'process.php'">Go To Process</button>
 <div>Starting here this is static HTML content.</div>
 </body>
 </html>
