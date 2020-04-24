@@ -26,7 +26,7 @@ if ($conn->connect_error) {
     }
 */
 
-$fromform = $_GET['data'];
+$fromform = $_POST['data'];
     echo $fromform;
 
 
