@@ -72,6 +72,10 @@
 
 <a href="process.php">Process Page</a>
 
+<form method="POST" action="process.php">
+    <input type="submit" value="Process">
+</form>
+
 </body>
 </html>
 
