@@ -70,7 +70,7 @@
     <input type="submit" value="Submit">
 </form>
 
-<a href="thefile.html">my link</a>
+<a href="process.php">Process Page</a>
 
 </body>
 </html>
