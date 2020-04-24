@@ -1,4 +1,13 @@
-<?php
+<!DOCTYPE html>
+<html>
+<head>
+    <title>How to put PHP in HTML- Date Example</title>
+</head>
+<body>
+<div>This is pure HTML message.</div>
+<div>Next, we’ll display today’s date and day by PHP!</div>
+<div>
+    <?php
     #phpinfo();
 
     $servername = "localhost";
@@ -16,15 +25,15 @@
 
 
     #Inserting data w php
-/* This worked!
-    $sql = "INSERT INTO Employee 
-        VALUES ('5656', '372e25f23b5a8ae33c5ba203412ace30', '1600', 'Hannah', 400.00, '12 Your Street')";
-    if (mysqli_query($conn, $sql)) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
-*/
+    /* This worked!
+        $sql = "INSERT INTO Employee
+            VALUES ('5656', '372e25f23b5a8ae33c5ba203412ace30', '1600', 'Hannah', 400.00, '12 Your Street')";
+        if (mysqli_query($conn, $sql)) {
+            echo "New record created successfully";
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    */
 
 
     #Query w php:
@@ -43,4 +52,8 @@
 
     echo "Connected successfully";
     mysqli_close($conn);
-?>
+    ?>
+</div>
+<div>Again, this is static HTML content.</div>
+</body>
+</html>
