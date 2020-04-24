@@ -27,9 +27,9 @@ if ($conn->connect_error) {
 */
 
 $fromform = $_POST['data'];
-if ($fromform) {
+if ($fromform) { #wont execute if the ish is empty
     echo $fromform;
-    echo "worled";
+    echo "<br>worked<br>";
 }
 
 #Query w php:
