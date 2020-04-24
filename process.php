@@ -14,6 +14,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+$intext = $_POST['data'];
 
 echo "other page Connected successfully";
 mysqli_close($conn);

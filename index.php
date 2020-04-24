@@ -10,9 +10,12 @@
     <input type="text" placeholder="Enter Data" name="data">
     <input type="submit" value="Submit">
 </form>
+<form method="post" name="form" action="process.php">
+    <input type="text" placeholder="Enter Data" name="data">
+    <input type="submit" value="Submit">
+</form>
 <div>
     <?php
-    #phpinfo();
 
     $servername = "localhost";
     $username = "project_15";
