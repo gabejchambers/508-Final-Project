@@ -6,7 +6,7 @@
 <body>
 <div>This is pure HTML message.</div>
 <form method="post" name="form" action="index.php">
-    <input type="text" placeholder="Enter Data" name="data">
+    <input type="text" placeholder="just testing stuff" name="data">
     <input type="submit" value="Submit">
 </form>
 
@@ -62,14 +62,16 @@
     echo "Connected successfully";
     mysqli_close($conn);
     ?>
-
 </div>
+<div>Starting here this is static HTML content.</div>
+
 <form method="post" name="form" action="process.php">
     <input type="text" placeholder="Enter Data" name="data">
     <input type="submit" value="Submit">
 </form>
-<button onclick="'process.php'">Go To Process</button>
-<div>Starting here this is static HTML content.</div>
+
+<a href="thefile.html">my link</a>
+
 </body>
 </html>
 
