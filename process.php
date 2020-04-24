@@ -27,10 +27,7 @@ if ($conn->connect_error) {
 */
 
 $fromform = $_GET['data'];
-if ($fromform) {
     echo $fromform;
-    echo "";
-}
 
 
 #Query w php:
