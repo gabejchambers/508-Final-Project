@@ -27,8 +27,10 @@ if ($conn->connect_error) {
 */
 
 $fromform = $_POST['data'];
+if ($fromform) {
     echo $fromform;
-
+    echo "worled";
+}
 
 #Query w php:
 $sql = "SELECT name, salary FROM Employee WHERE EID = 5656";
