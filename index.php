@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
+    <title>Index</title>
 </head>
 <body>
-<div>This is pure HTML message.</div>
+<div>Go to Process page (temp just seeing how this works)</div>
+<form method="POST" action="process.php">
+    <input type="submit" value="Process">
+</form>
+
+<br>
+
 <form method="post" name="form" action="index.php">
     <input type="text" placeholder="just testing stuff" name="data">
     <input type="submit" value="Submit">
@@ -40,10 +46,7 @@
     */
 
     $fromform = $_POST['data'];
-    if ($fromform) { #wont execute if the ish is empty
-        echo $fromform;
-        echo "<br>worked<br>";
-    }
+    echo $fromform;
 
     #Query w php:
     $sql = "SELECT name, salary FROM Employee WHERE EID = 5656";
@@ -64,14 +67,11 @@
     ?>
 </div>
 <div>Starting here this is static HTML content.</div>
-
-<form method="post" name="form" action="process.php">
-    <input type="text" placeholder="Enter Data" name="data">
-    <input type="submit" value="Submit">
-</form>
-
-<form method="POST" action="process.php">
-    <input type="submit" value="Process">
+<br>
+<div>Find emp name from emp id and open in new page:</div>
+<form method="post" name="form" action="findemp.php">
+    <input type="text" placeholder="Enter Employee ID" name="id_in">
+    <input type="submit" value="Search">
 </form>
 
 </body>
