@@ -5,7 +5,7 @@
 </head>
 <body>
 <div>This is pure HTML message.</div>
-<div>Next, we’ll display today’s date and day by PHP!</div>
+<div>Next, it displays aa PHP mySQLi Query:</div>
 <div>
     <?php
     #phpinfo();
@@ -54,6 +54,6 @@
     mysqli_close($conn);
     ?>
 </div>
-<div>Again, this is static HTML content.</div>
+<div>Starting here this is static HTML content.</div>
 </body>
 </html>
