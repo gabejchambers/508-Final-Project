@@ -70,7 +70,7 @@
 </div>
 
 <br>
-<div>Find emp name from emp id and open in new page:</div>
+<div>Find emp name from emp id and open in new page (ex 1111 is valid id):</div>
 <form method="post" name="form" action="findemp.php">
     <input type="text" placeholder="Enter Employee ID" name="id_in">
     <input type="submit" value="Search">
