@@ -4,19 +4,19 @@
     <title>Index</title>
 </head>
 <body>
-<div>Go to Process page (temp just seeing how this works)</div>
+<div>Go to Process page (temp page just seeing how this works)</div>
 <form method="POST" action="process.php">
     <input type="submit" value="Process">
 </form>
 
 <br>
-
+<div>Type something here:</div>
 <form method="post" name="form" action="index.php">
     <input type="text" placeholder="just testing stuff" name="data">
     <input type="submit" value="Submit">
 </form>
 
-<div>Next, it displays a PHP mySQLi Query:</div>
+<div>It'll appear here:<br></div>
 <div>
     <?php
 
@@ -48,8 +48,10 @@
     if (isset($_POST['data'])) {
         $fromform = $_POST['data'];
         echo $fromform;
+        echo "<br>";
     }
 
+    echo "<br>This is a php query with formatted output:<br>";
     #Query w php:
     $sql = "SELECT name, salary FROM Employee WHERE EID = 5656";
     $result = $conn->query($sql);
