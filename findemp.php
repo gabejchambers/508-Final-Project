@@ -19,7 +19,6 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    echo "php load successfully<br>";
     $idin = $_POST['id_in'];
 
     #Query w php and php variable:

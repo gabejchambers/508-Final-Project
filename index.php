@@ -16,7 +16,7 @@
     <input type="submit" value="Submit">
 </form>
 
-<div>It'll appear here:<br></div>
+<div>It'll appear here: </div>
 <div>
     <?php
 
@@ -65,18 +65,65 @@
         echo "0 results";
     }
 
-
-    echo "Connected successfully";
     mysqli_close($conn);
     ?>
 </div>
-<div>Starting here this is static HTML content.</div>
+
 <br>
 <div>Find emp name from emp id and open in new page:</div>
 <form method="post" name="form" action="findemp.php">
     <input type="text" placeholder="Enter Employee ID" name="id_in">
     <input type="submit" value="Search">
 </form>
+<br>
+
+<div>Find emp name from emp id and open in this page:</div>
+<form method="post" name="form" action="index.php">
+    <input type="text" placeholder="Enter Employee ID" name="id_in_same">
+    <input type="submit" value="Search">
+</form>
+<br>
+<div>
+    <?php
+    #phpinfo();
+
+    $servername = "localhost";
+    $username = "project_15";
+    $password = "V00827834";
+    $dbname = "project_15";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    if (isset($_POST['id_in_same'])) {
+        $idin = $_POST['id_in_same'];
+    }
+
+    #Query w php and php variable:
+    $sql = "SELECT name FROM Employee WHERE EID = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $idin);
+    $stmt->execute();
+    $result = $stmt->get_result(); // get the mysqli result
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            echo "Name: " . $row["name"]. "<br>";
+        }
+    } else {
+        echo "0 results";
+    }
+
+
+    mysqli_close($conn);
+    ?>
+</div>
+
 
 </body>
 </html>
