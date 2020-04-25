@@ -82,7 +82,7 @@
     <input type="text" placeholder="Enter Employee ID" name="id_in_same">
     <input type="submit" value="Search">
 </form>
-<br>
+
 <div>
     <?php
     #phpinfo();
@@ -125,6 +125,7 @@
     ?>
 </div>
 
+<br><br>
 <form method="POST" action="CustomerSignUp.php">
     <input type="submit" value="Sign Up">
 </form>
