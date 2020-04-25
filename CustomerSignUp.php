@@ -17,24 +17,22 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    
-    if (isset($_POST['id_in_same'])) {
-        $name = $email = $pwhash = $address = "";
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $name = test_input($_POST["name"]);
-            $email = test_input($_POST["email"]);
-            $pwhash = test_input($_POST["pwhash"]);
-            $address = test_input($_POST["address"]);
-        }
+    $name = $email = $pwhash = $address = "";
 
-        function test_input($data)
-        {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
-        }
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $name = test_input($_POST["name"]);
+        $email = test_input($_POST["email"]);
+        $pwhash = test_input($_POST["pwhash"]);
+        $address = test_input($_POST["address"]);
+    }
+
+    function test_input($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
     }
 
     mysqli_close($conn);
