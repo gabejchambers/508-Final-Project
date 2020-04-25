@@ -125,6 +125,9 @@
     ?>
 </div>
 
+<form method="POST" action="CustomerSignUp.php">
+    <input type="submit" value="Sign Up">
+</form>
 
 </body>
 </html>
