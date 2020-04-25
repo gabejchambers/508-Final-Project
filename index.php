@@ -45,8 +45,10 @@
         }
     */
 
-    $fromform = $_POST['data'];
-    echo $fromform;
+    if (isset($_POST['data'])) {
+        $fromform = $_POST['data'];
+        echo $fromform;
+    }
 
     #Query w php:
     $sql = "SELECT name, salary FROM Employee WHERE EID = 5656";
