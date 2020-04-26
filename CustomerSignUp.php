@@ -27,14 +27,14 @@
             $pwhash = test_input($_POST["pwhash"]);
             $address = test_input($_POST["address"]);
         }
+    }
 
-        function test_input($data)
-        {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
-        }
+    function test_input($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
     }
 
     mysqli_close($conn);
