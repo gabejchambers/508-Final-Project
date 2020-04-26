@@ -35,7 +35,7 @@
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
         return $data;
-    }
+    } 
 
     mysqli_close($conn);
     ?>
