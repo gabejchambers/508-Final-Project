@@ -76,6 +76,17 @@ if (isset($_POST['submit_frm'])) {
     echo $address;
     echo "<br>";
 
+    $sql = "SELECT name, salary FROM Employee WHERE EID = 5656";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            echo "Name: " . $row["name"]. " - Salary: " . $row["salary"]. "<br>";
+        }
+    } else {
+        echo "0 results";
+    }
+    /*
     $sql = "insert into Customers values ('".$email."', '".$pwhash."', '".$name."','".$address."')";
     if(mysqli_query($conn, $sql))
     {
@@ -83,6 +94,7 @@ if (isset($_POST['submit_frm'])) {
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
+    */
 
 
 }
