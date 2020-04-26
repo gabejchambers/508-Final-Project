@@ -18,21 +18,23 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $name = $email = $pwhash = $address = "";
+    if (isset($_POST['submit_frm'])) {
+        $name = $email = $pwhash = $address = "";
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $name = test_input($_POST["name"]);
-        $email = test_input($_POST["email"]);
-        $pwhash = test_input($_POST["pwhash"]);
-        $address = test_input($_POST["address"]);
-    }
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $name = test_input($_POST["name"]);
+            $email = test_input($_POST["email"]);
+            $pwhash = test_input($_POST["pwhash"]);
+            $address = test_input($_POST["address"]);
+        }
 
-    function test_input($data)
-    {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
+        function test_input($data)
+        {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
     }
 
     mysqli_close($conn);
@@ -49,19 +51,21 @@
     <br><br>
     Address: <input type="text" name="address">
     <br><br>
-    <input type="submit" name="submit" value="Submit">
+    <input type="submit" name="submit_frm" value="Submit">
 </form>
 
 <?php
-echo "<h2>Your Input:</h2>";
-echo $name;
-echo "<br>";
-echo $email;
-echo "<br>";
-echo $pwhash;
-echo "<br>";
-echo $address;
-echo "<br>";
+if (isset($_POST['submit_frm'])) {
+    echo "<h2>Your Input:</h2>";
+    echo $name;
+    echo "<br>";
+    echo $email;
+    echo "<br>";
+    echo $pwhash;
+    echo "<br>";
+    echo $address;
+    echo "<br>";
+}
 ?>
 
 
