@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <body>
+<br>
+<form method="POST" action="index.php">
+    <input type="submit" value="Index">
+</form>
+<br>
 <div>Sign Up</div>
 <div>
     <?php
@@ -35,7 +40,7 @@
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
         return $data;
-    } 
+    }
 
     mysqli_close($conn);
     ?>
@@ -67,11 +72,6 @@ if (isset($_POST['submit_frm'])) {
     echo "<br>";
 }
 ?>
-
-
-<form method="POST" action="index.php">
-    <input type="submit" value="Index">
-</form>
 
 </body>
 </html>
