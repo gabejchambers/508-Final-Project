@@ -83,7 +83,7 @@ if (isset($_POST['submit_frm'])) {
         echo "Registration successfully";
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
+    } 
 }
 mysqli_close($conn);
 ?>
