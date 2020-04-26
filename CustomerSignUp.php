@@ -69,37 +69,14 @@ $servername = "localhost";
 $username = "project_15";
 $password = "V00827834";
 $dbname = "project_15";
-
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
-
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 if (isset($_POST['submit_frm'])) {
-    echo "<h2>Your Input:</h2>";
-    echo $name;
-    echo "<br>";
-    echo $email;
-    echo "<br>";
-    echo $pwhash;
-    echo "<br>";
-    echo $address;
-    echo "<br>";
-
-    $sql = "SELECT name, salary FROM Employee WHERE EID = 5656";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-            echo "Name: " . $row["name"]. " - Salary: " . $row["salary"]. "<br>";
-        }
-    } else {
-        echo "0 results";
-    }
-
     $sql = "insert into Customer values ('".$email."', '".$pwhash."', '".$name."','".$address."')";
     if(mysqli_query($conn, $sql))
     {
@@ -107,10 +84,8 @@ if (isset($_POST['submit_frm'])) {
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
-
-
-    mysqli_close($conn);
 }
+mysqli_close($conn);
 ?>
 
 </body>
