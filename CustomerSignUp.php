@@ -33,7 +33,7 @@
             $email = test_input($_POST["email"]);
             $rawpw = test_input($_POST["rawpw"]);
             $address = test_input($_POST["address"]);
-            
+
             $options = array("cost"=>4);
             $pwhash = password_hash($password,PASSWORD_BCRYPT,$options);
         }
@@ -75,6 +75,15 @@ if (isset($_POST['submit_frm'])) {
     echo "<br>";
     echo $address;
     echo "<br>";
+
+    $sql = "insert into Customers (email, pwhash, name, address) value('".$email."', '".$pwhash."', '".$name."','".$address."')";
+    $result = mysqli_query($conn, $sql);
+    if($result)
+    {
+        echo "Registration successfully";
+    }
+
+
 }
 ?>
 
