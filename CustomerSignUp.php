@@ -76,11 +76,12 @@ if (isset($_POST['submit_frm'])) {
     echo $address;
     echo "<br>";
 
-    $sql = "insert into Customers (email, pwhash, name, address) value('".$email."', '".$pwhash."', '".$name."','".$address."')";
-    $result = mysqli_query($conn, $sql);
-    if($result)
+    $sql = "insert into Customers value('".$email."', '".$pwhash."', '".$name."','".$address."')";
+    if(mysqli_query($conn, $sql))
     {
         echo "Registration successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
 
 
