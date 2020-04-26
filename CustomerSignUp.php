@@ -6,7 +6,6 @@
     <input type="submit" value="Index">
 </form>
 <br>
-<div>Sign Up</div>
 <div>
     <?php
 
@@ -46,7 +45,7 @@
     ?>
 </div>
 
-<h2>PHP Form Validation Example</h2>
+<h2>Sign Up</h2>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     Name: <input type="text" name="name">
     <br><br>
