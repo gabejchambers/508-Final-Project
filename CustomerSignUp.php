@@ -100,14 +100,14 @@ if (isset($_POST['submit_frm'])) {
         echo "0 results";
     }
 
-    $sql = "insert into Customers values ('".$email."', '".$pwhash."', '".$name."','".$address."')";
+    $sql = "insert into Customer values ('".$email."', '".$pwhash."', '".$name."','".$address."')";
     if(mysqli_query($conn, $sql))
     {
         echo "Registration successfully";
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
-    
+
 
     mysqli_close($conn);
 }
