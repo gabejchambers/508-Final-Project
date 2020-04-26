@@ -99,7 +99,7 @@ if (isset($_POST['submit_frm'])) {
     } else {
         echo "0 results";
     }
-    /*
+
     $sql = "insert into Customers values ('".$email."', '".$pwhash."', '".$name."','".$address."')";
     if(mysqli_query($conn, $sql))
     {
@@ -107,7 +107,7 @@ if (isset($_POST['submit_frm'])) {
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
-    */
+    
 
     mysqli_close($conn);
 }
