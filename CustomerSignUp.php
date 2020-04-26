@@ -26,13 +26,14 @@
     }
 
     if (isset($_POST['submit_frm'])) {
-        $name = $email = $pwhash = $address = "";
+        $name = $email = $pwhash = $rawpw = $address = "";
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $name = test_input($_POST["name"]);
             $email = test_input($_POST["email"]);
-            $pwhash = test_input($_POST["pwhash"]);
+            $rawpw = test_input($_POST["rawpw"]);
             $address = test_input($_POST["address"]);
+            $pwhash ($rawpw, PASSWORD_DEFAULT);
         }
     }
 
@@ -54,7 +55,7 @@
     <br><br>
     E-mail: <input type="text" name="email">
     <br><br>
-    Password: <input type="text" name="pwhash">
+    Password: <input type="text" name="rawpw">
     <br><br>
     Address: <input type="text" name="address">
     <br><br>
