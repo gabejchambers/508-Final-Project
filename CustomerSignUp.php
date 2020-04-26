@@ -55,7 +55,7 @@
     <br><br>
     E-mail: <input type="text" name="email">
     <br><br>
-    Password: <input type="text" name="rawpw">
+    Password: <input type="password" name="rawpw" value="" placeholder="Password">
     <br><br>
     Address: <input type="text" name="address">
     <br><br>
