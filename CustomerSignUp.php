@@ -65,6 +65,19 @@
 </form>
 
 <?php
+$servername = "localhost";
+$username = "project_15";
+$password = "V00827834";
+$dbname = "project_15";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
 if (isset($_POST['submit_frm'])) {
     echo "<h2>Your Input:</h2>";
     echo $name;
@@ -96,7 +109,7 @@ if (isset($_POST['submit_frm'])) {
     }
     */
 
-
+    mysqli_close($conn);
 }
 ?>
 
