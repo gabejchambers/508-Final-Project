@@ -76,7 +76,7 @@ if (isset($_POST['submit_frm'])) {
     echo $address;
     echo "<br>";
 
-    $sql = "insert into Customers value('".$email."', '".$pwhash."', '".$name."','".$address."')";
+    $sql = "insert into Customers values ('".$email."', '".$pwhash."', '".$name."','".$address."')";
     if(mysqli_query($conn, $sql))
     {
         echo "Registration successfully";
