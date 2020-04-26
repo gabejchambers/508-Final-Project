@@ -33,7 +33,9 @@
             $email = test_input($_POST["email"]);
             $rawpw = test_input($_POST["rawpw"]);
             $address = test_input($_POST["address"]);
-            $pwhash ($rawpw, PASSWORD_DEFAULT);
+            
+            $options = array("cost"=>4);
+            $pwhash = password_hash($password,PASSWORD_BCRYPT,$options);
         }
     }
 
