@@ -126,6 +126,8 @@
 </div>
 
 <br><br>
+<div>Real functionality starts here:</div>
+<br>
 <form method="POST" action="CustomerSignUp.php">
     <input type="submit" value="Sign Up">
 </form>
