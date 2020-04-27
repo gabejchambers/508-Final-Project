@@ -121,6 +121,39 @@
     }
 
 
+    mysqli_close($conn);
+    ?>
+</div>
+
+<br><br>
+<div>Real functionality starts here:</div>
+<br>
+<h1>Login</h1>
+
+<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+    <input type="text" name="email" value="" placeholder="Email">
+    <input type="password" name="pw" value="" placeholder="Password">
+    <button type="submit" name="submit">Submit</button>
+</form>
+<br>
+<div>
+    <?php
+    #phpinfo();
+
+    $servername = "localhost";
+    $username = "project_15";
+    $password = "V00827834";
+    $dbname = "project_15";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+
     if(isset($_POST['submit'])){
         $email = trim($_POST['email']);
         $pw = trim($_POST['pw']);
@@ -147,17 +180,6 @@
     mysqli_close($conn);
     ?>
 </div>
-
-<br><br>
-<div>Real functionality starts here:</div>
-<br>
-<h1>Login</h1>
-
-<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-    <input type="text" name="email" value="" placeholder="Email">
-    <input type="password" name="pw" value="" placeholder="Password">
-    <button type="submit" name="submit">Submit</button>
-</form>
 <br>
 <form method="POST" action="CustomerSignUp.php">
     <input type="submit" value="Sign Up">
