@@ -132,7 +132,7 @@
 
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
     <input type="text" name="email" value="" placeholder="Email">
-    <input type="password" name="pw" value="" placeholder="pw">
+    <input type="password" name="pw" value="" placeholder="Password">
     <button type="submit" name="submit">Submit</button>
 </form>
 <br>
