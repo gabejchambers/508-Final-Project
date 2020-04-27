@@ -6,9 +6,6 @@
     <input type="submit" value="Index">
 </form>
 <br>
-<!-- STILL NEEDED IN THIS PAGE:
- CONVERT USER PW TO HASH
- INSERT NEW CUSTOMER INTO DATABASE INSTEAD OF PRINTING TO SCREEN -->
 <div>
     <?php
 

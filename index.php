@@ -60,6 +60,7 @@
 
 
         #Query w php and php variable:
+        #WARNING: not injection safe, see CistomerSignUp.php for that
         $sql = "SELECT name FROM Employee WHERE EID = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $idin);
@@ -119,7 +120,7 @@
 <form method="POST" action="CustomerSignUp.php">
     <input type="submit" value="Sign Up">
 </form>
-
+<br>
 <form method="POST" action="EmployeeSignUp.php">
     <input type="submit" value="Add New Employee">
 </form>
