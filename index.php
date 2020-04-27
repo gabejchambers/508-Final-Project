@@ -120,6 +120,10 @@
     <input type="submit" value="Sign Up">
 </form>
 
+<form method="POST" action="EmployeeSignUp.php">
+    <input type="submit" value="Add New Employee">
+</form>
+
 </body>
 </html>
 
