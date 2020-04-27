@@ -5,14 +5,7 @@
 </head>
 <body>
 
-<br>
-<div>Type something here:</div>
-<form method="post" name="form" action="index.php">
-    <input type="text" placeholder="just testing stuff" name="data">
-    <input type="submit" value="Submit">
-</form>
-
-<div>It'll appear here: </div>
+<div>Example Templates:</div>
 <div>
     <?php
 
@@ -29,12 +22,6 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-
-    if (isset($_POST['data'])) {
-        $fromform = $_POST['data'];
-        echo $fromform;
-        echo "<br>";
-    }
 
     echo "<br>This is a php query with formatted output:<br>";
     #Query w php:
