@@ -152,12 +152,6 @@
         $numRows = mysqli_num_rows($rs);
         if($numRows  == 1){
             $row = mysqli_fetch_assoc($rs);
-            echo $pw;
-            echo "<br>";
-            echo $email;
-            echo "<br>";
-            echo $row['pwhash'];
-            echo "<br>";
             if(password_verify($pw,$row['pwhash'])){
                 echo "Password verified";
             }
