@@ -165,9 +165,11 @@
         if($numRows  == 1){
             $row = mysqli_fetch_assoc($rs);
             if(password_verify($pw,$row['pwhash'])){
+                echo $pw;
                 echo "Password verified";
             }
             else {
+                echo $pw;
                 echo "Wrong Password";
             }
         }
