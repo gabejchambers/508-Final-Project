@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<h1>Example Templates:</h1>
+<h2>Example Templates:</h2>
 <div>
     <?php
 
