@@ -125,7 +125,7 @@
         $email = trim($_POST['email']);
         $pw = trim($_POST['pw']);
 
-        $sql = "select * from Customers where email = '".$email."'";
+        $sql = "select * from Customer where email = '".$email."'";
         $rs = mysqli_query($conn,$sql);
         $numRows = mysqli_num_rows($rs);
 
