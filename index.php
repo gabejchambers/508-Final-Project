@@ -4,10 +4,6 @@
     <title>Index</title>
 </head>
 <body>
-<div>Go to Process page (temp page just seeing how this works)</div>
-<form method="POST" action="process.php">
-    <input type="submit" value="Process">
-</form>
 
 <br>
 <div>Type something here:</div>
