@@ -23,7 +23,7 @@
     }
 
 
-    echo "<br>This is a php query with formatted output:<br>";
+    echo "This is a php query with formatted output:<br>";
     #Query w php:
     $sql = "SELECT name, salary FROM Employee WHERE EID = 5656";
     $result = $conn->query($sql);
