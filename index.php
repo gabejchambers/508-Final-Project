@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<div>Example Templates:</div>
+<h1>Example Templates:</h1>
 <div>
     <?php
 
@@ -49,7 +49,7 @@
 </form>
 <br>
 
-<div>Find emp name from emp id and open in this page:</div>
+<div>Find emp name from emp id and display in this page:</div>
 <form method="post" name="form" action="index.php">
     <input type="text" placeholder="Enter Employee ID" name="id_in_same">
     <input type="submit" value="Search">
@@ -100,7 +100,7 @@
 <br><br>
 <div>Real functionality starts here:</div>
 <br>
-<h1>Login</h1>
+<h2>Login</h2>
 
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
     <input type="text" name="email" value="" placeholder="Email">
