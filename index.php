@@ -128,6 +128,14 @@
 <br><br>
 <div>Real functionality starts here:</div>
 <br>
+<h1>Login</h1>
+
+<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+    <input type="text" name="email" value="" placeholder="Email">
+    <input type="password" name="pw" value="" placeholder="pw">
+    <button type="submit" name="submit">Submit</button>
+</form>
+<br>
 <form method="POST" action="CustomerSignUp.php">
     <input type="submit" value="Sign Up">
 </form>
