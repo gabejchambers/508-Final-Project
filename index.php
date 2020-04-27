@@ -120,6 +120,29 @@
         }
     }
 
+    require_once("config.php");
+    if(isset($_POST['submit'])){
+        $email = trim($_POST['email']);
+        $password = trim($_POST['password']);
+
+        $sql = "select * from Customers where email = '".$email."'";
+        $rs = mysqli_query($conn,$sql);
+        $numRows = mysqli_num_rows($rs);
+
+        if($numRows  == 1){
+            $row = mysqli_fetch_assoc($rs);
+            if(password_verify($password,$row['password'])){
+                echo "Password verified";
+            }
+            else{
+                echo "Wrong Password";
+            }
+        }
+        else{
+            echo "No User found";
+        }
+    }
+
 
     mysqli_close($conn);
     ?>
