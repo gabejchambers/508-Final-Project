@@ -13,12 +13,12 @@
     <?php
 
     $servername = "localhost";
-    $username = "project_15";
-    $password = "V00827834";
+    $db_username = "project_15";
+    $db_password = "V00827834";
     $dbname = "project_15";
 
     // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $db_username, $db_password, $dbname);
 
     // Check connection
     if ($conn->connect_error) {
@@ -66,11 +66,11 @@
 
 <?php
 $servername = "localhost";
-$username = "project_15";
-$password = "V00827834";
+$db_username = "project_15";
+$db_password = "V00827834";
 $dbname = "project_15";
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $db_username, $db_password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
