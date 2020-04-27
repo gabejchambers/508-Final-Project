@@ -123,7 +123,7 @@
 
     if(isset($_POST['submit'])){
         $email = trim($_POST['email']);
-        $password = trim($_POST['password']);
+        $pw = trim($_POST['pw']);
 
         $sql = "select * from Customers where email = '".$email."'";
         $rs = mysqli_query($conn,$sql);
@@ -131,10 +131,10 @@
 
         if($numRows  == 1){
             $row = mysqli_fetch_assoc($rs);
-            if(password_verify($password,$row['pwhash'])){
+            if(password_verify($pw,$row['pwhash'])){
                 echo "Password verified";
             }
-            else{
+            else {
                 echo "Wrong Password";
             }
         }
