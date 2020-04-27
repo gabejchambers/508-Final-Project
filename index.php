@@ -161,15 +161,18 @@
         $sql = "select * from Customer where email = '".$email."'";
         $rs = mysqli_query($conn,$sql);
         $numRows = mysqli_num_rows($rs);
-
         if($numRows  == 1){
             $row = mysqli_fetch_assoc($rs);
+            echo $pw;
+            echo "<br>";
+            echo $email;
+            echo "<br>";
+            echo $row['pwhash'];
+            echo "<br>";
             if(password_verify($pw,$row['pwhash'])){
-                echo $pw;
                 echo "Password verified";
             }
             else {
-                echo $pw;
                 echo "Wrong Password";
             }
         }

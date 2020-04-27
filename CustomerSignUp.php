@@ -35,7 +35,7 @@
             $address = test_input($_POST["address"]);
 
             $options = array("cost"=>4);
-            $pwhash = password_hash($password,PASSWORD_BCRYPT);#,$options);
+            $pwhash = password_hash($password,PASSWORD_BCRYPT,$options);
         }
     }
 
