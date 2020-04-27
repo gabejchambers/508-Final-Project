@@ -36,8 +36,6 @@
     } else {
         echo "0 results";
     }
-
-    mysqli_close($conn);
     ?>
 </div>
 
@@ -57,21 +55,6 @@
 
 <div>
     <?php
-    #phpinfo();
-
-    $servername = "localhost";
-    $db_username = "project_15";
-    $db_password = "V00827834";
-    $dbname = "project_15";
-
-    // Create connection
-    $conn = new mysqli($servername, $db_username, $db_password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
     if (isset($_POST['id_in_same'])) {
         $idin = $_POST['id_in_same'];
 
@@ -91,9 +74,6 @@
             echo "0 results";
         }
     }
-
-
-
     ?>
 </div>
 
@@ -110,10 +90,6 @@
 <br>
 <div>
     <?php
-    #phpinfo();
-
-
-
     if(isset($_POST['submit'])){
         $email = trim($_POST['email']);
         $pw = trim($_POST['pw']);
