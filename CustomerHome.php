@@ -40,10 +40,6 @@
     <h2>Home Page</h2>
     <p>Welcome back, <?=$_SESSION['c_name']?>!</p>
 
-    <form method="POST" action="CustomerSignUp.php">
-        <input type="submit" value="Add New Customer">
-    </form>
-
     <?php
     mysqli_close($conn);
     ?>
