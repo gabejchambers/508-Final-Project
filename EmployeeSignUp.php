@@ -27,7 +27,7 @@
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $name = test_input($_POST["name"]);
-            $email = test_input($_POST["email"]);
+            $EID = test_input($_POST["EID"]);
             $rawpw = test_input($_POST["rawpw"]);
             $address = test_input($_POST["address"]);
             $location = test_input($_POST["location"]);
