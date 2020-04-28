@@ -6,7 +6,7 @@
 <body>
 <br>
 <form method="POST" action="Logout.php">
-    <input type="submit" value="Log Out">
+    <input type="submit" value="Logout">
 </form>
 <br>
 <form method="POST" action="EmployeeProfile.php">
