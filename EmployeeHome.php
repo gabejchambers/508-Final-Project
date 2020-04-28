@@ -37,7 +37,7 @@
             if(password_verify($e_pw,$row['pwhash'])){
                 session_regenerate_id();
                 $_SESSION['loggedin'] = TRUE;
-                $_SESSION['name'] = $_POST['username'];
+                $_SESSION['name'] = $_POST['EID'];
                 $_SESSION['id'] = $EID;
                 echo 'Welcome ' . $_SESSION['name'] . '!';
             }
