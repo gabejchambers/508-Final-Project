@@ -38,7 +38,7 @@
     ?>
 
     <h2>Home Page</h2>
-    <p>Welcome back, <?=$_SESSION['c_name']?>!</p>
+    <p>Welcome back, <?=$_SESSION['c_email']?>!</p>
 
     <?php
     mysqli_close($conn);

@@ -37,7 +37,7 @@
             if(password_verify($c_pw,$row['pwhash'])){
                 session_regenerate_id();
                 $_SESSION['c_loggedin'] = TRUE;
-                $_SESSION['c_name'] = $_POST['email'];
+                $_SESSION['c_email'] = $_POST['email'];
                 $_SESSION['c_id'] = $email;
                 header('Location: CustomerHome.php');
             }
