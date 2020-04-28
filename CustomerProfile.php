@@ -5,6 +5,10 @@
 </head>
 <body>
 <br>
+<form method="POST" action="Logout.php">
+    <input type="submit" value="Logout">
+</form>
+<br>
 <form method="POST" action="CustomerHome.php">
     <input type="submit" value="Home">
 </form>
