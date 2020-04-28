@@ -35,7 +35,7 @@
         if($c_numRows  == 1){
             $row = mysqli_fetch_assoc($c_rs);
             if(password_verify($c_pw,$row['pwhash'])){
-                session_regeneratc_id();
+                session_regenerate_id();
                 $_SESSION['c_loggedin'] = TRUE;
                 $_SESSION['c_name'] = $_POST['email'];
                 $_SESSION['c_id'] = $email;
