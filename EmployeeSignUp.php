@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Employee Sign Up</title>
+</head>
 <body>
 <br>
 <form method="POST" action="index.php">
