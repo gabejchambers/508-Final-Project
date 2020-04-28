@@ -147,7 +147,7 @@
 </div>
 <br>
 <form method="POST" action="CustomerSignUp.php">
-    <input type="submit" value="Sign Up">
+    <input type="submit" value="Customer Sign Up">
 </form>
 
 <?php
