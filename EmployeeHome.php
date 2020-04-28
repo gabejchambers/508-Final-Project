@@ -5,8 +5,8 @@
 </head>
 <body>
 <br>
-<form method="POST" action="index.php">
-    <input type="submit" value="Index">
+<form method="POST" action="Logout.php">
+    <input type="submit" value="Log Out">
 </form>
 <br>
 <form method="POST" action="EmployeeProfile.php">
