@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Employee Home</title>
+    <title>Employee Authentication</title>
 </head>
 <body>
 <br>
@@ -39,7 +39,7 @@
                 $_SESSION['loggedin'] = TRUE;
                 $_SESSION['name'] = $_POST['EID'];
                 $_SESSION['id'] = $EID;
-                echo 'Welcome ' . $_SESSION['name'] . '!';
+                header('Location: EmployeeHome.php');
             }
             else {
                 echo "Wrong Password.";
