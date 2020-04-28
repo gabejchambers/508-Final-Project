@@ -9,6 +9,10 @@
     <input type="submit" value="Index">
 </form>
 <br>
+<form method="POST" action="EmployeeProfile.php">
+    <input type="submit" value="Profile">
+</form>
+<br>
 <div>
     <?php
     $servername = "localhost";
