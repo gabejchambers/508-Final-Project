@@ -80,8 +80,7 @@
 
 <br><br>
 <div>Real functionality starts here:</div>
-<br>
-<h2>Login</h2>
+<h2>Customer Login</h2>
 
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
     <input type="text" name="email" value="" placeholder="Email">
@@ -101,6 +100,39 @@
         if($numRows  == 1){
             $row = mysqli_fetch_assoc($rs);
             if(password_verify($pw,$row['pwhash'])){
+                echo "Password verified";
+            }
+            else {
+                echo "Wrong Password";
+            }
+        }
+        else{
+            echo "No User found";
+        }
+    }
+    ?>
+</div>
+
+<h2>Employee Login</h2>
+
+<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+    <input type="text" name="EID" value="" placeholder="EID ex 0123">
+    <input type="password" name="e_pw" value="" placeholder="Password">
+    <button type="submit" name="e_submit">Submit</button>
+</form>
+<br>
+<div>
+    <?php
+    if(isset($_POST['e_submit'])){
+        $EID = trim($_POST['EID']);
+        $e_pw = trim($_POST['e_pw']);
+
+        $e_sql = "select * from Employee where EID = '".$EID."'";
+        $e_rs = mysqli_query($conn,$e_sql);
+        $e_numRows = mysqli_num_rows($e_rs);
+        if($e_numRows  == 1){
+            $row = mysqli_fetch_assoc($rs);
+            if(password_verify($e_pw,$row['pwhash'])){
                 echo "Password verified";
             }
             else {
