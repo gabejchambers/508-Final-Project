@@ -131,7 +131,7 @@
         $e_rs = mysqli_query($conn,$e_sql);
         $e_numRows = mysqli_num_rows($e_rs);
         if($e_numRows  == 1){
-            $row = mysqli_fetch_assoc($rs);
+            $row = mysqli_fetch_assoc($e_rs);
             if(password_verify($e_pw,$row['pwhash'])){
                 echo "Password verified";
             }
