@@ -117,7 +117,7 @@
 
 <form action="EmployeeAuthentication.php" method="post">
     <input type="text" name="EID" value="" placeholder="EID ex 0123">
-    <input type="password" name="e_pw" value="" placeholder="Password">
+    <input type="password" name="e_pw" value="" placeholder="Password ex test">
     <button type="submit" name="e_submit">Submit</button>
 </form>
 <br>

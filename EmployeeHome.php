@@ -14,7 +14,7 @@
 </form>
 <br>
 <div>
-    <?php 
+    <?php
     $servername = "localhost";
     $db_username = "project_15";
     $db_password = "V00827834";
