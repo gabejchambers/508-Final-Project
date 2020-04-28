@@ -82,6 +82,18 @@
 <div>Real functionality starts here:</div> <!--#####################################################################-->
 <h2>Customer Login</h2>
 
+
+<?php
+#this function makes sure you dont do sql injections
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+?>
+
 <form action="CustomerAuthentification.php" method="post">
     <input type="text" name="email" value="" placeholder="Email ex test">
     <input type="password" name="c_pw" value="" placeholder="Password ex test">
@@ -91,8 +103,8 @@
 <div>
     <?php
     if(isset($_POST['c_submit'])){
-        $email = trim($_POST['email']);
-        $c_pw = trim($_POST['c_pw']);
+        $email = test_input($_POST["email"]);
+        $c_pw = test_input($_POST['c_pw']);
 
         $c_sql = "select * from Customer where email = '".$email."'";
         $c_rs = mysqli_query($conn,$c_sql);
@@ -124,8 +136,8 @@
 <div>
     <?php
     if(isset($_POST['e_submit'])){
-        $EID = trim($_POST['EID']);
-        $e_pw = trim($_POST['e_pw']);
+        $EID = test_input($_POST['EID']);
+        $e_pw = test_input($_POST['e_pw']);
 
         $e_sql = "select * from Employee where EID = '".$EID."'";
         $e_rs = mysqli_query($conn,$e_sql);
