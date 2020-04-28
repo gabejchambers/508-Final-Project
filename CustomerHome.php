@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Employee Home</title>
+    <title>Customer Home</title>
 </head>
 <body>
 <br>
@@ -9,7 +9,7 @@
     <input type="submit" value="Logout">
 </form>
 <br>
-<form method="POST" action="EmployeeProfile.php">
+<form method="POST" action="CustomerProfile.php">
     <input type="submit" value="Profile">
 </form>
 <br>
@@ -31,21 +31,21 @@
     // We need to use sessions, so you should always start sessions using the below code.
     session_start();
     // If the user is not logged in redirect to the login page...
-    if (!isset($_SESSION['e_loggedin'])) {
+    if (!isset($_SESSION['c_loggedin'])) {
         header('Location: index.php');
         exit;
     }
     ?>
 
     <h2>Home Page</h2>
-<p>Welcome back, <?=$_SESSION['e_name']?>!</p>
+    <p>Welcome back, <?=$_SESSION['c_name']?>!</p>
 
-<form method="POST" action="EmployeeSignUp.php">
-    <input type="submit" value="Add New Employee">
-</form>
+    <form method="POST" action="CustomerSignUp.php">
+        <input type="submit" value="Add New Customer">
+    </form>
 
     <?php
-        mysqli_close($conn);
+    mysqli_close($conn);
     ?>
 </div>
 </body>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Employee Authentication</title>
+    <title>Customer Authentication</title>
 </head>
 <body>
 <br>
@@ -24,22 +24,22 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    #if a eid and password were sent:
-    if ( isset($_POST['EID'], $_POST['e_pw']) ){
-        $EID = trim($_POST['EID']);
-        $e_pw = trim($_POST['e_pw']);
+    #if a email and password were sent:
+    if ( isset($_POST['email'], $_POST['c_pw']) ){
+        $email = trim($_POST['email']);
+        $c_pw = trim($_POST['c_pw']);
 
-        $e_sql = "select * from Employee where EID = '".$EID."'";
-        $e_rs = mysqli_query($conn,$e_sql);
-        $e_numRows = mysqli_num_rows($e_rs);
-        if($e_numRows  == 1){
-            $row = mysqli_fetch_assoc($e_rs);
-            if(password_verify($e_pw,$row['pwhash'])){
-                session_regenerate_id();
-                $_SESSION['e_loggedin'] = TRUE;
-                $_SESSION['e_name'] = $_POST['EID'];
-                $_SESSION['e_id'] = $EID;
-                header('Location: EmployeeHome.php');
+        $c_sql = "select * from Customer where email = '".$email."'";
+        $c_rs = mysqli_query($conn,$c_sql);
+        $c_numRows = mysqli_num_rows($c_rs);
+        if($c_numRows  == 1){
+            $row = mysqli_fetch_assoc($c_rs);
+            if(password_verify($c_pw,$row['pwhash'])){
+                session_regeneratc_id();
+                $_SESSION['c_loggedin'] = TRUE;
+                $_SESSION['c_name'] = $_POST['email'];
+                $_SESSION['c_id'] = $email;
+                header('Location: CustomerHome.php');
             }
             else {
                 echo "Wrong Password.";

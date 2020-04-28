@@ -13,7 +13,7 @@
     <?php
     session_start();
     // If the user is not logged in redirect to the login page...
-    if (!isset($_SESSION['loggedin'])) {
+    if (!isset($_SESSION['e_loggedin'])) {
         header('Location: index.php');
         exit;
     }
@@ -39,7 +39,7 @@
     <?php
         $sql = "SELECT * FROM Employee WHERE EID = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $_SESSION['name']);
+        $stmt->bind_param("s", $_SESSION['e_name']);
         $stmt->execute();
         $result = $stmt->get_result(); // get the mysqli result
         if ($result->num_rows > 0) {

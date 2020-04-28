@@ -79,27 +79,27 @@
 </div>
 
 <br><br>
-<div>Real functionality starts here:</div>
+<div>Real functionality starts here:</div> <!--#####################################################################-->
 <h2>Customer Login</h2>
 
-<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-    <input type="text" name="email" value="" placeholder="Email">
-    <input type="password" name="pw" value="" placeholder="Password">
-    <button type="submit" name="submit">Submit</button>
+<form action="CustomerAuthentification.php" method="post">
+    <input type="text" name="email" value="" placeholder="Email ex test">
+    <input type="password" name="c_pw" value="" placeholder="Password ex test">
+    <button type="submit" name="c_submit">Submit</button>
 </form>
 <br>
 <div>
     <?php
-    if(isset($_POST['submit'])){
+    if(isset($_POST['c_submit'])){
         $email = trim($_POST['email']);
-        $pw = trim($_POST['pw']);
+        $c_pw = trim($_POST['c_pw']);
 
-        $sql = "select * from Customer where email = '".$email."'";
-        $rs = mysqli_query($conn,$sql);
-        $numRows = mysqli_num_rows($rs);
-        if($numRows  == 1){
-            $row = mysqli_fetch_assoc($rs);
-            if(password_verify($pw,$row['pwhash'])){
+        $c_sql = "select * from Customer where email = '".$email."'";
+        $c_rs = mysqli_query($conn,$c_sql);
+        $c_numRows = mysqli_num_rows($c_rs);
+        if($c_numRows  == 1){
+            $row = mysqli_fetch_assoc($c_rs);
+            if(password_verify($c_pw,$row['pwhash'])){
                 echo "Password verified";
             }
             else {
