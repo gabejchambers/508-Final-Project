@@ -115,7 +115,7 @@
 
 <h2>Employee Login</h2>
 
-<form action="EmployeeHome.php" method="post">
+<form action="EmployeeAuthentication.php" method="post">
     <input type="text" name="EID" value="" placeholder="EID ex 0123">
     <input type="password" name="e_pw" value="" placeholder="Password">
     <button type="submit" name="e_submit">Submit</button>
