@@ -4,8 +4,6 @@
     <title>Employee Home</title>
 </head>
 <body>
-<h2>Home Page</h2>
-<p>Welcome back, <?=$_SESSION['name']?>!</p>
 <br>
 <form method="POST" action="index.php">
     <input type="submit" value="Index">
@@ -33,9 +31,13 @@
         header('Location: index.php');
         exit;
     }
+    ?>
+    
+    <h2>Home Page</h2>
+<p>Welcome back, <?=$_SESSION['name']?>!</p>
 
-
-    mysqli_close($conn);
+    <?php
+        mysqli_close($conn);
     ?>
 </div>
 </body>
