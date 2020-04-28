@@ -23,13 +23,27 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    if ( !isset($_POST['EID'], $_POST['e_pw']) ) {
-        // Could not get the data that should have been sent.
-        exit('Please fill both the username and password fields!');
-    } else {
-        echo "correct ish";
-        echo "<br>";
-        echo $_POST['EID'];
+
+    #if a eid and password were sent:
+    if ( isset($_POST['EID'], $_POST['e_pw']) ){
+        $EID = trim($_POST['EID']);
+        $e_pw = trim($_POST['e_pw']);
+
+        $e_sql = "select * from Employee where EID = '".$EID."'";
+        $e_rs = mysqli_query($conn,$e_sql);
+        $e_numRows = mysqli_num_rows($e_rs);
+        if($e_numRows  == 1){
+            $row = mysqli_fetch_assoc($e_rs);
+            if(password_verify($e_pw,$row['pwhash'])){
+                echo "Password verified";
+            }
+            else {
+                echo "Wrong Password";
+            }
+        }
+        else{
+            echo "No User found";
+        }
     }
 
     mysqli_close($conn);
