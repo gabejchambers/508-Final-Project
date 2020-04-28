@@ -143,19 +143,16 @@
             echo "No User found";
         }
     }
-
-
-    mysqli_close($conn);
     ?>
 </div>
 <br>
 <form method="POST" action="CustomerSignUp.php">
     <input type="submit" value="Sign Up">
 </form>
-<br>
-<form method="POST" action="EmployeeSignUp.php">
-    <input type="submit" value="Add New Employee">
-</form>
+
+<?php
+mysqli_close($conn);
+?>
 
 </body>
 </html>
