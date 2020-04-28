@@ -28,6 +28,8 @@
         exit('Please fill both the username and password fields!');
     } else {
         echo "correct ish";
+        echo "<br>";
+        echo $_POST['EID'];
     }
 
     mysqli_close($conn);
