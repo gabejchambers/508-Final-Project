@@ -35,14 +35,18 @@
         if($e_numRows  == 1){
             $row = mysqli_fetch_assoc($e_rs);
             if(password_verify($e_pw,$row['pwhash'])){
-                echo "Password verified";
+                session_regenerate_id();
+                $_SESSION['loggedin'] = TRUE;
+                $_SESSION['name'] = $_POST['username'];
+                $_SESSION['id'] = $EID;
+                echo 'Welcome ' . $_SESSION['name'] . '!';
             }
             else {
-                echo "Wrong Password";
+                echo "Wrong Password.";
             }
         }
         else{
-            echo "No User found";
+            echo "No User found.";
         }
     }
 
