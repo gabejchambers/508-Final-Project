@@ -11,7 +11,6 @@
 <br>
 <div>
     <?php
-    session_start();
     $servername = "localhost";
     $db_username = "project_15";
     $db_password = "V00827834";
