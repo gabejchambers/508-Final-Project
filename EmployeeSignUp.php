@@ -5,8 +5,8 @@
 </head>
 <body>
 <br>
-<form method="POST" action="index.php">
-    <input type="submit" value="Index">
+<form method="POST" action="EmployeeHome.php">
+    <input type="submit" value="Home">
 </form>
 <br>
 <div>
