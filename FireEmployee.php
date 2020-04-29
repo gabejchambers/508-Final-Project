@@ -72,9 +72,9 @@ if (isset($_POST['submit_fire'])) {#did they click submit?
                     echo "Removed successfully";
                 } else {#if query couldnt be completed
                     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                }   
+                }
             }
-        }
+        } else { echo "down here";}
 
     } else {#if the user is trying to fire themselves:
         echo "Don't fire yourself";
