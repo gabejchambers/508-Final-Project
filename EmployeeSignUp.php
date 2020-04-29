@@ -3,30 +3,7 @@
 <head>
     <title>Employee Sign Up</title>
 </head>
-<body>
-<br>
-<form method="POST" action="Logout.php">
-    <input type="submit" value="Logout">
-</form>
-<br>
 <?php
-if($_SESSION['ismanager']){
-    ?>
-    <form method="POST" action="ManagerHome.php">
-        <input type="submit" value="Home">
-    </form>
-    <?php
-} else {
-    ?>
-    <form method="POST" action="EmployeeHome.php">
-        <input type="submit" value="Home">
-    </form>
-    <?php
-}
-?>
-<br>
-<div>
-    <?php
 
     $servername = "localhost";
     $db_username = "project_15";
@@ -56,7 +33,25 @@ if($_SESSION['ismanager']){
             $pwhash = password_hash($rawpw,PASSWORD_BCRYPT,$options);
         }
     }
-
+    ?>
+<body>
+<br>
+<form method="POST" action="Logout.php">
+    <input type="submit" value="Logout">
+</form>
+<br>
+    <?php if($_SESSION['ismanager']){?>
+    <form method="POST" action="ManagerHome.php">
+        <input type="submit" value="Home">
+    </form>
+    <?php } else { ?>
+    <form method="POST" action="EmployeeHome.php">
+        <input type="submit" value="Home">
+    </form>
+    <?php } ?>
+<br>
+<div>
+    <?php
     function test_input($data)
     {
         $data = trim($data);
