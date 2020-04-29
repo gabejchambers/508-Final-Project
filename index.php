@@ -158,7 +158,9 @@ function test_input($data)
     ?>
 </div>
 <pr>manager eid: 1234</pr>
+<br>
 <pr>manager pw: manager</pr>
+<br>
 <br>
 <form method="POST" action="CustomerSignUp.php">
     <input type="submit" value="Customer Sign Up">
