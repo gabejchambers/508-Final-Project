@@ -46,8 +46,8 @@
     </form>
     <br>
     <!--fire button:-->
-    <form method="POST" action="EmployeeSignUp.php">
-        <input type="submit" value="Add New Employee">
+    <form method="POST" action="FireEmployee.php">
+        <input type="submit" value="Remove Employee">
     </form>
 
     <?php

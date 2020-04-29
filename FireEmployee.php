@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><title>Employee Sign Up</title></head>
+<head><title>Remove Employee</title></head>
 <!--manager access header-->
 <?php
 session_start();
@@ -49,7 +49,7 @@ if (isset($_POST['submit_fire'])) {
     }
 }
 ?>
-<h2>Fire Employee</h2>
+<h2>Remove Employee</h2>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     EID: <input type="text" name="EID">
     <br><br>
