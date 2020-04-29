@@ -42,6 +42,7 @@
 
 
     <?php
+        echo $_SESSION['ismanager'];
         mysqli_close($conn);
     ?>
 </div>
