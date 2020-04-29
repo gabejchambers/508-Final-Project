@@ -77,7 +77,7 @@ if (isset($_POST['submit_fire'])) {#did they click submit?
         $iss_result = mysqli_query($conn, $iss_sql);
         if(mysqli_num_rows($iss_result)!=0) { #if they are a supervisor
             #delete the entries is supervisors that they occur
-            $sup_rows = mysqli_fetch_assoc($iss_result);
+            #$sup_rows = mysqli_fetch_assoc($iss_result);#delete this line
             while($sup_rows = $iss_result->fetch_assoc()) {
                 $sup_delete_query = "delete from Supervise where shift_lead = '".$sup_rows['shift_lead']."' and employee = '".$sup_rows['employee']."'";
                 if (!mysqli_query($conn, $sup_delete_query)) { echo "Error: " . $sql . "<br>" . mysqli_error($conn); }
