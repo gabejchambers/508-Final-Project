@@ -34,7 +34,7 @@ if ($conn->connect_error) {
         <input type="submit" value="Home">
     </form>
     <?php } else {
-        header('Location: index.php');
+        header('Location: Logout.php');
         exit;
     } ?>
 <br>
