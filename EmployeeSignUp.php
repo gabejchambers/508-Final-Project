@@ -3,6 +3,7 @@
 <head>
     <title>Employee Sign Up</title>
 </head>
+<!--standard employee header-->
 <?php
 session_start();
 // If the user is not logged in redirect to the login page...
@@ -23,20 +24,21 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 ?>
+<!-- logout if not a manager (ie a normal employee)-->
+<?php if(!$_SESSION['ismanager']){
+    header('Location: Logout.php');
+    exit;
+} ?>
 <body>
 <br>
 <form method="POST" action="Logout.php">
     <input type="submit" value="Logout">
 </form>
 <br>
-    <?php if($_SESSION['ismanager']){?>
-    <form method="POST" action="ManagerHome.php">
-        <input type="submit" value="Home">
-    </form>
-    <?php } else {
-        header('Location: Logout.php');
-        exit;
-    } ?>
+
+<form method="POST" action="ManagerHome.php">
+    <input type="submit" value="Home">
+</form>
 <br>
 <div>
     <?php
