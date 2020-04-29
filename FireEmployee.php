@@ -63,8 +63,7 @@ if (isset($_POST['submit_fire'])) {#did they click submit?
     if($EID != $_SESSION['e_id']) {#are you trying to fire yourself?
         $ism_sql = "select * from Stores s, Employee e where e.EID = s.manager and e.EID = '".$EID."'";
         $ism_result = mysqli_query($conn, $ism_sql);
-        $ism_numRows = mysqli_num_rows($ism_result);
-        if($ism_numRows == 0) {#if they are not trying to fire a manager
+        if(!mysqli_num_rows($ism_result)) {#if they are not trying to fire a manager
             $sql = "delete from Employee where EID = '" . $EID . "'";
             if (mysqli_query($conn, $sql)) {#if query is successfully run
                 echo "Removed successfully";
