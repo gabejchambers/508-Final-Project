@@ -4,36 +4,25 @@
     <title>Employee Sign Up</title>
 </head>
 <?php
+session_start();
+// If the user is not logged in redirect to the login page...
+if (!isset($_SESSION['e_loggedin'])) {
+    header('Location: index.php');
+    exit;
+}
 
-    $servername = "localhost";
-    $db_username = "project_15";
-    $db_password = "V00827834";
-    $dbname = "project_15";
+$servername = "localhost";
+$db_username = "project_15";
+$db_password = "V00827834";
+$dbname = "project_15";
 
-    // Create connection
-    $conn = new mysqli($servername, $db_username, $db_password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    if (isset($_POST['submit_frm'])) {
-        $name = $EID = $pwhash = $rawpw = $address = $location = $salary = "";
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $name = test_input($_POST["name"]);
-            $EID = test_input($_POST["EID"]);
-            $rawpw = test_input($_POST["rawpw"]);
-            $address = test_input($_POST["address"]);
-            $location = test_input($_POST["location"]);
-            $salary = test_input($_POST["salary"]);
-
-            $options = array("cost"=>4);
-            $pwhash = password_hash($rawpw,PASSWORD_BCRYPT,$options);
-        }
-    }
-    ?>
+// Create connection
+$conn = new mysqli($servername, $db_username, $db_password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+?>
 <body>
 <br>
 <form method="POST" action="Logout.php">
@@ -61,7 +50,23 @@
     }
     ?>
 </div>
+<?php
+if (isset($_POST['submit_frm'])) {
+    $name = $EID = $pwhash = $rawpw = $address = $location = $salary = "";
 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $name = test_input($_POST["name"]);
+        $EID = test_input($_POST["EID"]);
+        $rawpw = test_input($_POST["rawpw"]);
+        $address = test_input($_POST["address"]);
+        $location = test_input($_POST["location"]);
+        $salary = test_input($_POST["salary"]);
+
+        $options = array("cost"=>4);
+        $pwhash = password_hash($rawpw,PASSWORD_BCRYPT,$options);
+    }
+}
+?>
 <h2>Sign Up</h2>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     EID: <input type="text" name="EID">
