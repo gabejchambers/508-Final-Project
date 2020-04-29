@@ -43,7 +43,7 @@
     <?php
         $sql = "SELECT * FROM Employee WHERE EID = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $_SESSION['e_name']);
+        $stmt->bind_param("s", $_SESSION['e_id']);
         $stmt->execute();
         $result = $stmt->get_result(); // get the mysqli result
         if ($result->num_rows > 0) {
