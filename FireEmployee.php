@@ -61,30 +61,38 @@ if (isset($_POST['submit_fire'])) {
 <?php
 if (isset($_POST['submit_fire'])) {#did they click submit?
     if($EID != $_SESSION['e_id']) {#are you trying to fire yourself?
+        
+        #if firing a manager:
         $ism_sql = "select * from Store s, Employee e where e.EID = s.manager and e.EID = '".$EID."'";
         $ism_result = mysqli_query($conn, $ism_sql);
-        if(mysqli_num_rows($ism_result)!=0) {#if they are trying to fire a manager
-            #set manager of their store to null, then fire
+        if(mysqli_num_rows($ism_result)!=0) {
+            #set manager of their store to null
             $store_manager_rows = mysqli_fetch_assoc($ism_result);
             $man_to_null_query = "update Store set manager = null WHERE manager = '".$EID."'";
-            if (mysqli_query($conn, $man_to_null_query)) {#if query is successfully run
-                $sql = "delete from Employee where EID = '" . $EID . "'";
-                if (mysqli_query($conn, $sql)) {#if query is successfully run
-                    echo "Removed manager successfully";
-                } else {#if query couldnt be completed
-                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                }
-            } else {#if query couldnt be completed
-                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-            }
-        } else {#if they are not trying to fire a manager:
-            $sql = "delete from Employee where EID = '" . $EID . "'";
-            if (mysqli_query($conn, $sql)) {#if query is successfully run
-                echo "Removed successfully";
-            } else {#if query couldnt be completed
-                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            if (!mysqli_query($conn, $man_to_null_query)) { echo "Error: " . $sql . "<br>" . mysqli_error($conn); }
+        }
+        
+        #if firing a supervisor or someone who is supervised:
+        $iss_sql = "select * from Supervise where shift_lead = '".$EID."' or employee = '".$EID."'";
+        $iss_result = mysqli_query($conn, $iss_sql);
+        if(mysqli_num_rows($iss_result)!=0) { #if they are a supervisor
+            #delete the entries is supervisors that they occur
+            $sup_rows = mysqli_fetch_assoc($iss_result);
+            while($sup_rows = $iss_result->fetch_assoc()) {
+                $sup_delete_query = "delete from Supervise where shift_lead = '".$sup_rows['shift_lead']."' and employee = '".$sup_rows['employee']."'";
+                if (!mysqli_query($conn, $sup_delete_query)) { echo "Error: " . $sql . "<br>" . mysqli_error($conn); }
             }
         }
+        
+        
+
+        $sql = "delete from Employee where EID = '" . $EID . "'";
+        if (mysqli_query($conn, $sql)) {#if query is successfully run
+            echo "Removed successfully";
+        } else {#if query couldnt be completed
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+        
 
     } else {#if the user is trying to fire themselves:
         echo "Don't fire yourself";
