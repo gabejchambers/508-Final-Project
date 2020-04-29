@@ -29,22 +29,9 @@ if ($conn->connect_error) {
     <input type="submit" value="Logout">
 </form>
 <br>
-<?php
-if($_SESSION['ismanager']){
-   ?>
-    <form method="POST" action="ManagerHome.php">
-        <input type="submit" value="Home">
-    </form>
-<?php
-} else {
-?>
-    <form method="POST" action="EmployeeHome.php">
-        <input type="submit" value="Home">
-    </form>
-<?php
-}
-?>
-
+<form method="POST" action="ManagerHome.php">
+    <input type="submit" value="Home">
+</form>
 <br>
 <div>
 
@@ -76,7 +63,6 @@ if($_SESSION['ismanager']){
     ?>
 
     <?php
-    echo $_SESSION['ismanager'];
     mysqli_close($conn);
     ?>
 </div>

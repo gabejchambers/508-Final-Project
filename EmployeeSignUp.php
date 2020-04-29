@@ -9,9 +9,21 @@
     <input type="submit" value="Logout">
 </form>
 <br>
-<form method="POST" action="ManagerHome.php">
-    <input type="submit" value="Home">
-</form>
+<?php
+if($_SESSION['ismanager']){
+    ?>
+    <form method="POST" action="ManagerHome.php">
+        <input type="submit" value="Home">
+    </form>
+    <?php
+} else {
+    ?>
+    <form method="POST" action="EmployeeHome.php">
+        <input type="submit" value="Home">
+    </form>
+    <?php
+}
+?>
 <br>
 <div>
     <?php
