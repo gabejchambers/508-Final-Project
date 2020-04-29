@@ -41,11 +41,11 @@ if ($conn->connect_error) {
     <?php
     $sql = "SELECT * FROM Employee WHERE EID = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $_SESSION['e_name']);
+    $stmt->bind_param("s", $_SESSION['e_id']);
     $stmt->execute();
     $result = $stmt->get_result(); // get the mysqli result
 
-    $s_sql = "select * from Store s, Employee m WHERE m.EID = s.manager and m.EID = '".$_SESSION['e_name']."'";
+    $s_sql = "select * from Store s, Employee m WHERE m.EID = s.manager and m.EID = '".$_SESSION['e_id']."'";
     $s_rs = mysqli_query($conn,$s_sql);
     $s_row = mysqli_fetch_assoc($s_rs);
 
