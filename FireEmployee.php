@@ -63,7 +63,7 @@ if (isset($_POST['submit_fire'])) {#did they click submit?
     if($EID != $_SESSION['e_id']) {#are you trying to fire yourself?
         $ism_sql = "select * from Stores s, Employee e where e.EID = s.manager and e.EID = '".$EID."'";
         $ism_result = mysqli_query($conn, $ism_sql);
-        if($ism_result) {#if they are trying to fire a manager
+        if(TRUE) {#if they are trying to fire a manager
             if ($ism_result->num_rows === 0) {#if they are trying to fire a manager
                 echo "cannot fire a sitting manager, must assign new manager first";
             } else {#if they are not trying to fire a manager:
