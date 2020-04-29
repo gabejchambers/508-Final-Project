@@ -33,11 +33,10 @@ if ($conn->connect_error) {
     <form method="POST" action="ManagerHome.php">
         <input type="submit" value="Home">
     </form>
-    <?php } else { ?>
-    <form method="POST" action="EmployeeHome.php">
-        <input type="submit" value="Home">
-    </form>
-    <?php } ?>
+    <?php } else {
+        header('Location: index.php');
+        exit;
+    } ?>
 <br>
 <div>
     <?php
