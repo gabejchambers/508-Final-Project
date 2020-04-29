@@ -40,6 +40,12 @@
     <h2>Home Page</h2>
     <p>Welcome back, <?=$_SESSION['e_name']?>!</p>
 
+    <!--new employee sign up button:-->
+    <form method="POST" action="EmployeeSignUp.php">
+        <input type="submit" value="Add New Employee">
+    </form>
+    <br>
+    <!--fire button:-->
     <form method="POST" action="EmployeeSignUp.php">
         <input type="submit" value="Add New Employee">
     </form>
