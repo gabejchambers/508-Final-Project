@@ -40,9 +40,6 @@
     <h2>Home Page</h2>
 <p>Welcome back, <?=$_SESSION['e_name']?>!</p>
 
-<form method="POST" action="EmployeeSignUp.php">
-    <input type="submit" value="Add New Employee">
-</form>
 
     <?php
         mysqli_close($conn);

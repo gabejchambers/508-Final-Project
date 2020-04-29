@@ -47,10 +47,14 @@
     $stmt->execute();
     $result = $stmt->get_result(); // get the mysqli result
 
+    $s_sql = "select s.SID from Store s, Employee m WHERE m.EID = s.manager and m.EID = '".$_SESSION['e_name']."'";
+    $s_rs = mysqli_query($conn,$s_sql);
+    $s_row = mysqli_fetch_assoc($s_rs);
 
     if ($result->num_rows > 0) {
         // output data of each row
         while ($row = $result->fetch_assoc()) {
+            echo "Managages Location: " . $s_row["s.SID"] . "<br>";
             echo "Name: " . $row["name"] . "<br>";
             echo "EID: " . $row["EID"] . "<br>";
             echo "Store Location: " . $row["location"] . "<br>";
