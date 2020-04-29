@@ -25,28 +25,51 @@
     }
 
     #if a eid and password were sent:
-    if ( isset($_POST['EID'], $_POST['e_pw']) ){
+    if ( isset($_POST['EID'], $_POST['e_pw']) ) {
         $EID = trim($_POST['EID']);
         $e_pw = trim($_POST['e_pw']);
 
-        $e_sql = "select * from Employee where EID = '".$EID."'";
-        $e_rs = mysqli_query($conn,$e_sql);
+
+        $m_sql = "select e.pwhash from Store s, Employee e where e.EID = '" . $EID . "' and e.EID = s.manager";
+        $m_rs = mysqli_query($conn, $m_sql);
+        $m_numRows = mysqli_num_rows($m_rs);
+
+        $e_sql = "select * from Employee where EID = '" . $EID . "'";
+        $e_rs = mysqli_query($conn, $e_sql);
         $e_numRows = mysqli_num_rows($e_rs);
-        if($e_numRows  == 1){
-            $row = mysqli_fetch_assoc($e_rs);
-            if(password_verify($e_pw,$row['pwhash'])){
-                session_regenerate_id();
-                $_SESSION['e_loggedin'] = TRUE;
-                $_SESSION['e_name'] = $_POST['EID'];
-                $_SESSION['e_id'] = $EID;
-                header('Location: EmployeeHome.php');
+
+        if ($m_numRows == 1) {
+            if ($e_numRows == 1) {
+                $row = mysqli_fetch_assoc($e_rs);
+                if (password_verify($e_pw, $row['pwhash'])) {
+                    session_regenerate_id();
+                    $_SESSION['e_loggedin'] = TRUE;
+                    $_SESSION['e_name'] = $_POST['EID'];
+                    $_SESSION['e_id'] = $EID;
+                    header('Location: ManagerHome.php');
+                } else {
+                    echo "Wrong Password.";
+                }
+            } else {
+                echo "No User found.";
             }
-            else {
-                echo "Wrong Password.";
+
+        } else {
+
+            if ($e_numRows == 1) {
+                $row = mysqli_fetch_assoc($e_rs);
+                if (password_verify($e_pw, $row['pwhash'])) {
+                    session_regenerate_id();
+                    $_SESSION['e_loggedin'] = TRUE;
+                    $_SESSION['e_name'] = $_POST['EID'];
+                    $_SESSION['e_id'] = $EID;
+                    header('Location: EmployeeHome.php');
+                } else {
+                    echo "Wrong Password.";
+                }
+            } else {
+                echo "No User found.";
             }
-        }
-        else{
-            echo "No User found.";
         }
     }
 
