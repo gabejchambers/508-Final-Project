@@ -9,7 +9,7 @@
     <input type="submit" value="Logout">
 </form>
 <br>
-<form method="POST" action="EmployeeHome.php">
+<form method="POST" action="ManagerHome.php">
     <input type="submit" value="Home">
 </form>
 <br>
