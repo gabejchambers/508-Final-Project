@@ -1,5 +1,25 @@
 <!DOCTYPE html>
 <html>
+<?php
+session_start();
+// If the user is not logged in redirect to the login page...
+if (!isset($_SESSION['e_loggedin'])) {
+    header('Location: index.php');
+    exit;
+}
+
+$servername = "localhost";
+$db_username = "project_15";
+$db_password = "V00827834";
+$dbname = "project_15";
+
+// Create connection
+$conn = new mysqli($servername, $db_username, $db_password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+?>
 <head>
     <title>Manager Profile</title>
 </head>
@@ -9,33 +29,24 @@
     <input type="submit" value="Logout">
 </form>
 <br>
-<form method="POST" action="ManagerHome.php">
-    <input type="submit" value="Home">
-</form>
+<?php
+if($_SESSION['ismanager']){
+   ?>
+    <form method="POST" action="ManagerHome.php">
+        <input type="submit" value="Home">
+    </form>
+<?php
+} else {
+?>
+    <form method="POST" action="EmployeeHome.php">
+        <input type="submit" value="Home">
+    </form>
+<?php
+}
+?>
+
 <br>
 <div>
-    <?php
-    session_start();
-    // If the user is not logged in redirect to the login page...
-    if (!isset($_SESSION['e_loggedin'])) {
-        header('Location: index.php');
-        exit;
-    }
-
-    $servername = "localhost";
-    $db_username = "project_15";
-    $db_password = "V00827834";
-    $dbname = "project_15";
-
-    // Create connection
-    $conn = new mysqli($servername, $db_username, $db_password, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-
-    ?>
 
     <h2>Manager Profile</h2>
     <p>Your account information is below:</p>

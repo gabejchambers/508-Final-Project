@@ -43,6 +43,7 @@
                 $row = mysqli_fetch_assoc($e_rs);
                 if (password_verify($e_pw, $row['pwhash'])) {
                     session_regenerate_id();
+                    $_SESSION['ismanager'] = TRUE;
                     $_SESSION['e_loggedin'] = TRUE;
                     $_SESSION['e_name'] = $_POST['EID'];
                     $_SESSION['e_id'] = $EID;
@@ -60,6 +61,7 @@
                 $row = mysqli_fetch_assoc($e_rs);
                 if (password_verify($e_pw, $row['pwhash'])) {
                     session_regenerate_id();
+                    $_SESSION['ismanager'] = FALSE;
                     $_SESSION['e_loggedin'] = TRUE;
                     $_SESSION['e_name'] = $_POST['EID'];
                     $_SESSION['e_id'] = $EID;
