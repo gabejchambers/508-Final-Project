@@ -32,6 +32,7 @@ if ($conn->connect_error) {
 </form>
 <br>
 <?php
+#trim user input for sql injectios
 function test_input($data)
 {
     $data = trim($data);
@@ -49,6 +50,7 @@ if (isset($_POST['submit_fire'])) {
     }
 }
 ?>
+
 <h2>Remove Employee</h2>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     EID: <input type="text" name="EID">
@@ -57,13 +59,20 @@ if (isset($_POST['submit_fire'])) {
 </form>
 
 <?php
-if (isset($_POST['submit_fire'])) {
-    if($EID != $_SESSION['e_id']) {
-        $sql = "delete from Employee where EID = '" . $EID . "'";
-        if (mysqli_query($conn, $sql)) {
-            echo "Removed successfully";
-        } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+if (isset($_POST['submit_fire'])) {#did they click submit?
+    if($EID != $_SESSION['e_id']) {#are you trying to fire yourself?
+        $ism_sql = "select * from Stores s, Employee e where e.EID = s.manager and e.EID = '".$EID."'";
+        $ism_result = mysqli_query($conn, $ism_sql);
+        $ism_numRows = mysqli_num_rows($ism_result);
+        if($ism_numRows == 0) {#if they are not trying to fire a manager
+            $sql = "delete from Employee where EID = '" . $EID . "'";
+            if (mysqli_query($conn, $sql)) {#if query is successfully run
+                echo "Removed successfully";
+            } else {#if query couldnt be completed
+                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            }
+        } else {#if they are trying to fire a manager:
+            echo "cannot fire a sitting manager, must assign new manager first";
         }
     } else {#if the user is trying to fire themselves:
         echo "Don't fire yourself";
