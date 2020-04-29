@@ -45,7 +45,7 @@
                     session_regenerate_id();
                     $_SESSION['ismanager'] = TRUE;
                     $_SESSION['e_loggedin'] = TRUE;
-                    $_SESSION['e_name'] = $_POST['EID'];
+                    $_SESSION['e_name'] = $row['name'];
                     $_SESSION['e_id'] = $EID;
                     header('Location: ManagerHome.php');
                 } else {

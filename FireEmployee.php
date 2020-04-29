@@ -58,7 +58,7 @@ if (isset($_POST['submit_fire'])) {
 
 <?php
 if (isset($_POST['submit_fire'])) {
-    if($EID != $_SESSION['id']) {
+    if($EID != $_SESSION['e_id']) {
         $sql = "delete from Employee where EID = '" . $EID . "'";
         if (mysqli_query($conn, $sql)) {
             echo "Registration successfully";
