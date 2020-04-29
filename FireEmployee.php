@@ -63,18 +63,17 @@ if (isset($_POST['submit_fire'])) {#did they click submit?
     if($EID != $_SESSION['e_id']) {#are you trying to fire yourself?
         $ism_sql = "select * from Stores s, Employee e where e.EID = s.manager and e.EID = '".$EID."'";
         $ism_result = mysqli_query($conn, $ism_sql);
-        if(TRUE) {#if they are trying to fire a manager
-            if ($ism_result->num_rows === 0) {#if they are trying to fire a manager
-                echo "cannot fire a sitting manager, must assign new manager first";
-            } else {#if they are not trying to fire a manager:
-                $sql = "delete from Employee where EID = '" . $EID . "'";
-                if (mysqli_query($conn, $sql)) {#if query is successfully run
-                    echo "Removed successfully";
-                } else {#if query couldnt be completed
-                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                }
+        $ism_row = mysqli_fetch_row($ism_result);
+        if (implode(null, $ism_row) != null) {#if they are trying to fire a manager
+            echo "cannot fire a sitting manager, must assign new manager first";
+        } else {#if they are not trying to fire a manager:
+            $sql = "delete from Employee where EID = '" . $EID . "'";
+            if (mysqli_query($conn, $sql)) {#if query is successfully run
+                echo "Removed successfully";
+            } else {#if query couldnt be completed
+                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
             }
-        } else { echo "down here";}
+        }
 
     } else {#if the user is trying to fire themselves:
         echo "Don't fire yourself";
