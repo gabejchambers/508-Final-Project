@@ -64,10 +64,9 @@ if (isset($_POST['submit_fire'])) {#did they click submit?
         $ism_sql = "select * from Store s, Employee e where e.EID = s.manager and e.EID = '".$EID."'";
         $ism_result = mysqli_query($conn, $ism_sql);
         if(mysqli_num_rows($ism_result)!=0) {#if they are trying to fire a manager
-            echo "cannot fire a sitting manager, must assign new manager first";
             #set manager of their store to null, then fire
             $store_manager_rows = mysqli_fetch_assoc($ism_result);
-            $man_to_null_query = "insert into Employee values ('".$store_manager_rows['manager']."', NULL) WHERE '".$store_manager_rows['manager']."' = '".$EID."'";
+            $man_to_null_query = "insert into Employee values ('".$store_manager_rows['manager']."', NULL) WHERE manager = '".$EID."'";
             if (mysqli_query($conn, $man_to_null_query)) {#if query is successfully run
                 $sql = "delete from Employee where EID = '" . $EID . "'";
                 if (mysqli_query($conn, $sql)) {#if query is successfully run
