@@ -42,9 +42,6 @@
 
 
     <?php
-        echo $_SESSION['ismanager'];
-        echo "test";
-        echo $_SESSION['e_name'];
         mysqli_close($conn);
     ?>
 </div>
