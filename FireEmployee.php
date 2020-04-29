@@ -66,7 +66,7 @@ if (isset($_POST['submit_fire'])) {#did they click submit?
         if(mysqli_num_rows($ism_result)!=0) {#if they are trying to fire a manager
             #set manager of their store to null, then fire
             $store_manager_rows = mysqli_fetch_assoc($ism_result);
-            $man_to_null_query = "update Employee set manager = null WHERE manager = '".$EID."'";
+            $man_to_null_query = "update Store set manager = null WHERE manager = '".$EID."'";
             if (mysqli_query($conn, $man_to_null_query)) {#if query is successfully run
                 $sql = "delete from Employee where EID = '" . $EID . "'";
                 if (mysqli_query($conn, $sql)) {#if query is successfully run
