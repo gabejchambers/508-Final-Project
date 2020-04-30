@@ -60,6 +60,13 @@
         <input type="submit" value="Update Invenotry">
     </form>
     <br>
+    <!--update manager button:-->
+    <form method="POST" action="SetStoreManager.php">
+        <input type="submit" value="Set Store Manager">
+    </form>
+    <br>
+
+
 
     <?php
     mysqli_close($conn);
