@@ -162,6 +162,12 @@ function test_input($data)
 <pr>manager pw: manager</pr>
 <br>
 <br>
+
+<h2>Find Books!</h2>
+<form method="POST" action="BookMain.php">
+    <input type="submit" value="View or find books!">
+</form>
+
 <form method="POST" action="CustomerSignUp.php">
     <input type="submit" value="Customer Sign Up">
 </form>
