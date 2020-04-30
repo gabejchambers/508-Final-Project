@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><title>New Supervisor</title></head>
+<head><title>Set Manager</title></head>
 <!--manager access header-->
 <?php
 session_start();
@@ -43,27 +43,27 @@ function test_input($data)
 ?>
 
 <?php
-if (isset($_POST['submit_sup'])) {
-    $sup_EID = $emp_EID = "";
+if (isset($_POST['submit_man'])) {
+    $SID = $man_EID = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $sup_EID = test_input($_POST["sup_EID"]);
-        $emp_EID = test_input($_POST["emp_EID"]);
+        $SID = test_input($_POST["SID"]);
+        $man_EID = test_input($_POST["man_EID"]);
     }
 }
 ?>
 
-<h2>New Supervisor/Employee Relationship</h2>
+<h2>Set Store Manager:</h2>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-    Supervisor EID: <input type="text" name="sup_EID">
+    Store ID: <input type="text" name="SID">
     <br><br>
-    Subordinate EID: <input type="text" name="emp_EID">
+    New Manager ID: <input type="text" name="man_EID">
     <br><br>
-    <input type="submit" name="submit_sup" value="Submit">
+    <input type="submit" name="submit_man" value="Submit">
 </form>
 
 <?php
-if (isset($_POST['submit_sup'])) {#did they click submit?
-    $sql = "insert into Supervise values ('".$sup_EID."', '".$emp_EID."')";
+if (isset($_POST['submit_man'])) {#did they click submit?
+    $sql = "update Store set manager = '".$man_EID."' where SID = '".$SID."'";
     if(mysqli_query($conn, $sql))
     {
         echo "Assigned successfully";
