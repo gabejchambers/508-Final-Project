@@ -89,7 +89,7 @@ if (isset($_POST['submit_frm'])) {
     if(mysqli_num_rows($isi_result)!=0) {
         #set manager of their store to null
         $inventory_rows = mysqli_fetch_assoc($isi_result);
-        $delete_inv_query = "delete from Inventory where ISBN = '".$ISBN."' and store = '".$location."'";
+        $delete_inv_query = "delete from Inventory where book = '".$ISBN."' and store = '".$location."'";
         if (!mysqli_query($conn, $delete_inv_query)) { echo "Error: " . $sql . "<br>" . mysqli_error($conn); }
     }
 
