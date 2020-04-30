@@ -49,6 +49,12 @@
     <form method="POST" action="FireEmployee.php">
         <input type="submit" value="Remove Employee">
     </form>
+    <br>
+    <!--New supervisor/subordinate button:-->
+    <form method="POST" action="AddSupervisorSubordinate.php">
+        <input type="submit" value="New Supervisor/Subordinate">
+    </form>
+    <br>
 
     <?php
     mysqli_close($conn);
