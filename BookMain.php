@@ -26,7 +26,7 @@
     <form method="post" action="BookMain.php">
         <input type="submit" value="all the books!">
     </form>
-
+    <br>
     <div>
         <?php
         if (isset($_POST["submit"])) {
@@ -60,13 +60,14 @@
     }
     ?>
 
-
+    <br>
+    <br>
     <div>Search book!</div>
     <form method="post" action="BookMain.php">
         <input type="text" placeholder="Enter ISBN" name="isbn_val">
         <input type="submit" value="Search">
     </form>
-
+    <br>
     <div>
         <?php
         if (isset($_POST["isbn_value"])) {
