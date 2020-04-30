@@ -55,6 +55,11 @@
         <input type="submit" value="New Supervisor/Subordinate">
     </form>
     <br>
+    <!--update inventory button:-->
+    <form method="POST" action="UpdateInventory.php">
+        <input type="submit" value="Update Invenotry">
+    </form>
+    <br>
 
     <?php
     mysqli_close($conn);

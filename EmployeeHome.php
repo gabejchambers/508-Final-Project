@@ -40,10 +40,15 @@
     <h2>Home Page</h2>
 <p>Welcome back, <?=$_SESSION['e_name']?>!</p>
 
+<!--update inventory button:-->
+<form method="POST" action="UpdateInventory.php">
+    <input type="submit" value="Update Invenotry">
+</form>
+<br>
 
-    <?php
-        mysqli_close($conn);
-    ?>
+<?php
+    mysqli_close($conn);
+?>
 </div>
 </body>
 </html>
