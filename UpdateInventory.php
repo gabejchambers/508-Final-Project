@@ -70,7 +70,7 @@ if (isset($_POST['submit_frm'])) {
     }
 }
 ?>
-<h2>Sign Up</h2>
+<h2>Update Inventory</h2>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     ISBN: <input type="text" name="ISBN">
     <br><br>
@@ -84,7 +84,7 @@ if (isset($_POST['submit_frm'])) {
 <?php
 if (isset($_POST['submit_frm'])) {
     #if a quantity for that book/store pair already exists, delete it:
-    $isi_sql = "select * from Inventory where ISBN = '".$ISBN."' and store = '".$location."'";
+    $isi_sql = "select * from Inventory where book = '".$ISBN."' and store = '".$location."'";
     $isi_result = mysqli_query($conn, $isi_sql);
     if(mysqli_num_rows($isi_result)!=0) {
         #set manager of their store to null
