@@ -4,7 +4,9 @@
     <title>Book Info</title>
 </head>
 <body>
-
+<form method="POST" action="index.php">
+    <input type="submit" value="Index">
+</form>
 <div>
     <?php
 
@@ -23,20 +25,20 @@
     ?>
 
     <div>View all</div>
+    <br>
     <form method="post" action="BookMain.php">
-        <input type="submit" value="all the books!">
+        <button type="submit" name="view">All Books!</button>
     </form>
     <br>
     <div>
         <?php
-        if (isset($_POST["submit"])) {
-            $sql = "SELECT * FROM Books";
-            $stmt = $conn->prepare($sql);
-            $stmt->execute();
-            $result = $stmt->get_result();
-
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
+        if (isset($_POST["view"])) {
+            $sql = "SELECT * FROM Book";
+            $viewDat = mysqli_query($conn,$sql);
+            $r_num = mysqli_num_rows($viewDat);
+            if ($r_num > 0) {
+                $row = mysqli_fetch_assoc($viewDat);
+                while ($row) {
                     echo "ISBN: " . $row["ISBN"] . "  Title: " . $row["title"] . "  Genre: " . $row["genre"] . "  Price: " . $row["price"] . "  Publisher: " . $row["publisher"];
                 }
             } else {
@@ -44,8 +46,6 @@
             }
 
         }
-
-
         ?>
     </div>
 
@@ -63,27 +63,27 @@
     <br>
     <br>
     <div>Search book!</div>
+    <br>
     <form method="post" action="BookMain.php">
         <input type="text" placeholder="Enter ISBN" name="isbn_val">
-        <input type="submit" value="Search">
+        <button type="submit" name="s_book">Search</button>
     </form>
     <br>
     <div>
         <?php
-        if (isset($_POST["isbn_value"])) {
+        if (isset($_POST["s_book"])) {
             $bookID = test_input($_POST["isbn_value"]);
 
-            $sql = "SELECT * FROM Book WHERE ISBN = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("i", $bookID);
-            $stmt->execute();
-            $result = $stmt->get_result();
-
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
+            $sql = "SELECT * FROM Book WHERE ISBN = '".$bookID."'";
+            $sDat = mysqli_query($conn,$sql);
+            $r_num = mysqli_num_rows($sDat);
+            if ($r_num > 0) {
+                $row = mysqli_fetch_assoc($sDat);
+                while ($row) {
                     echo "ISBN: " . $row["ISBN"] . "  Title: " . $row["title"] . "  Genre: " . $row["genre"] . "  Price: " . $row["price"] . "  Publisher: " . $row["publisher"];
                 }
-            } else {
+            }
+            else {
                 echo "ISBN unavailable";
             }
 
