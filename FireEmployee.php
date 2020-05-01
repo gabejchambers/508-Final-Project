@@ -4,21 +4,13 @@
 <!--manager access header-->
 <?php
 session_start();
+include_once 'dbconnect.php';
+
 if ((!isset($_SESSION['e_loggedin'])) OR (!$_SESSION['ismanager'])) {
     header('Location: logout.php');
     exit;
 }
-$servername = "localhost";
-$db_username = "project_15";
-$db_password = "V00827834";
-$dbname = "project_15";
 
-// Create connection
-$conn = new mysqli($servername, $db_username, $db_password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 ?>
 <body>
 <br>
