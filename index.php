@@ -152,6 +152,34 @@ function test_input($data)
 <br>
 <br>
 
+<h2>Info By Store</h2> <select name="storeID"></select>
+
+<div>
+    <form method="POST" action="StoreMain.php" id="sidList">
+        <label for="storeID">Enter Store ID</label>
+        <input type="text" name="sid_val">
+        <button type="submit">Go!</button>
+    </form>
+
+<!--Coming back to this it is annoying:)
+    <?php
+/*    $st_sql = "select SID from Store";
+    $st_rs = mysqli_query($conn,$st_sql);
+    */?>
+    <select name="storeID" form="sidList">
+        <?php
+/*        while($rows = $st_rs->fetch_assoc())
+        {
+            $s_id = $st_rs['SID'];
+            echo "<option value='" . $row['SID'] . "'>" . $row['SID'] . "</option>";
+        }
+        */?>
+    </select>-->
+</div>
+
+
+<br>
+<br>
 <h2>Find Books!</h2>
 <form method="POST" action="BookMain.php">
     <input type="submit" value="View or find books!">

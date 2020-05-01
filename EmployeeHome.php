@@ -31,7 +31,7 @@
 
 <!--update inventory button:-->
 <form method="POST" action="UpdateInventory.php">
-    <input type="submit" value="Update Invenotry">
+    <input type="submit" value="Update Inventory">
 </form>
 <br>
 

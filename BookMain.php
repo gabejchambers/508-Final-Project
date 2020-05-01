@@ -29,7 +29,7 @@
             if(mysqli_num_rows($viewDat) > 0){
                 echo "<table>";
                 while ($row = mysqli_fetch_array($viewDat)) {
-                    echo "<tr><td>" . "ISBN: " . $row["ISBN"] . "  Title: " . $row["title"] . "  Genre: " . $row["genre"] . "  Price: " . $row["price"] . "  Publisher: " . $row["publisher"] . "</td></tr>";
+                    echo "<tr><td>" . "ISBN: " . $row["ISBN"] . "  Title: " . $row["title"] . "  Genre: " . $row["genre"] . "  Price: " . $row["price"] . "  Publisher: " . $row["publisher"] . "</td></tr>" . "<br>";
                 echo "</table>";
                 }
             } else {
@@ -71,7 +71,7 @@
                 if ($r_num == 1) {
                     $row = mysqli_fetch_assoc($sDat);
                     echo "<table>";
-                    echo "<tr><td>" . "ISBN: " . $row["ISBN"] . "  Title: " . $row["title"] . "  Genre: " . $row["genre"] . "  Price: " . $row["price"] . "  Publisher: " . $row["publisher"] . "</td></tr>";
+                    echo "<tr><td>" . "ISBN: " . $row["ISBN"] . "  Title: " . $row["title"] . "  Genre: " . $row["genre"] . "  Price: " . $row["price"] . "  Publisher: " . $row["publisher"] . "</td></tr>" . "<br>";
                     echo "</table>";
 
                 } else {
