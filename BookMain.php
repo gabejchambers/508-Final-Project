@@ -73,7 +73,7 @@
     <div>
         <?php
         if (isset($_POST["s_book"])) {
-                $bookID = test_input($_POST["isbn_value"]);
+                $bookID = test_input($_POST["isbn_val"]);
 
                 $sql = "SELECT * FROM Book WHERE ISBN = '".$bookID."'";
                 $sDat = mysqli_query($conn, $sql);
