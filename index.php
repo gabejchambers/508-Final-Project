@@ -152,7 +152,7 @@ function test_input($data)
 <br>
 <br>
 
-<h2>Info By Store</h2> <select name="storeID"></select>
+<h2>Info By Store</h2>
 
 <div>
     <form method="POST" action="StoreMain.php" id="sidList">
