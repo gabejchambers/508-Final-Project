@@ -65,10 +65,10 @@ $store = $_POST['sid_val'];
 
             $b_sql = "SELECT * FROM Book b, Inventory i WHERE b.ISBN = i.book and i.store = '".$store."'";
             $b_Dat = mysqli_query($conn,$b_sql);
-            $b_row = mysqli_fetch_assoc($b_Dat);
+            $b_vals = mysqli_fetch_array($b_Dat);
 
             if($result_v->num_rows > 0){
-                while ($row = $result_v->fetch_assoc()) {
+                while ($row = $result_v->fetch_assoc() and $b_row = mysqli_fetch_assoc($b_vals)) {
                     echo "ISBN: " . $b_row["ISBN"] . "  Title: " . $b_row["title"] . "  Genre: " . $b_row["genre"] . "<br>";
                     echo "       # in Stock: " . $row["quantity"] . "  Price: " . $b_row['price'] . "<br>";
                     echo "<br>";
