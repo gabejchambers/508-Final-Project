@@ -16,6 +16,7 @@ if ( isset($_POST['sid_val'])) {
 }
 
 $_SESSION['sid_val'] = $store;
+$store = $_SESSION['sid_val'];
 
 //have to set this page up as select instead of input, covers errors so we dont have to
 ?>
