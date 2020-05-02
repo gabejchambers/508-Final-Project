@@ -173,12 +173,10 @@ function test_input($data)
             }
         ?>
         </select>
-        <button type="submit" name="s_sub">Go!</button>
+        <button type="submit">Go!</button>
     </form>
     <?php
-        if(isset($_POST['s_sub'])) {
             $sid_val = test_input($_POST['sid_val']);
-        }
     ?>
 </div>
 
