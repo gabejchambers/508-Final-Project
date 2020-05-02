@@ -50,7 +50,7 @@ $store = $_POST['sid_val'];
     <br>
     <form method="post" action="StoreMain.php">
         <?php
-        echo "<input value='" .$store."' name='sid_val'>"
+        echo "<input type='hidden' value='" .$store."' name='sid_val'>"
         ?>
         <button type="submit" name="view">Our Books!</button>
     </form>
@@ -98,6 +98,9 @@ $store = $_POST['sid_val'];
     <h4>Local search</h4>
     <br>
     <form method="post" action="StoreMain.php">
+        <?php
+        echo "<input type='hidden' value='" .$store."' name='sid_val'>"
+        ?>
         <input type="text" placeholder="Enter ISBN" name="isbn_val">
         <button type="submit" name="s_book">Search</button>
     </form>
