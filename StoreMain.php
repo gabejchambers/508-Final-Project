@@ -73,7 +73,7 @@ $store = $_POST['sid_val'];
                     echo "<button type='submit' style='border:0; background-color: transparent; color: royalblue; text-decoration: underline;'> 
                             ISBN: " . $b_row["ISBN"] . "  Title: " . $b_row["title"] . "</button>";
                     echo "</form>";
-                    echo "  Genre: " . $b_row["genre"] . "<br>";
+                    echo "    Genre: " . $b_row["genre"] . "<br>";
                     echo "       # in Stock: " . $row["quantity"] . "  Price: " . $b_row['price'] . "<br>";
                     echo "<br>";
 
@@ -125,7 +125,13 @@ $store = $_POST['sid_val'];
 
             if($result->num_rows == 1){
                 while ($row = $result->fetch_assoc()) {
-                    echo "Title: " . $b_row["title"] . "  Genre: " . $b_row["genre"] . "<br>";
+                    echo "<form method='POST' action='BookView.php'>";
+                    echo "<input type='hidden' value='" .$store."' name='sid_val'>";
+                    echo "<input type='hidden' value='" .$b_row['ISBN']."' name='book_val'>";
+                    echo "<button type='submit' style='border:0; background-color: transparent; color: royalblue; text-decoration: underline;'> 
+                             Title: " . $b_row["title"] . "</button>";
+                    echo "</form>";
+                    echo "  Genre: " . $b_row["genre"] . "<br>";
                     echo "       # in Stock: " . $row["quantity"] . "  Price: " . $b_row['price'] . "<br>";
                     echo "<br>";
                 }
