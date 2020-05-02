@@ -53,7 +53,7 @@ $book_v = $_POST['book_val']
     <form method="POST" action="BuildOrder.php">
         <?php
         echo "<input type='hidden' value='" .$book_v."' name='book_val'>";
-        echo "<input type='hidden' value='" .$store."' name='s_id'>";
+        echo "<input type='hidden' value='" .$store."' name='sid_va;'>";
         ?>
         <input type="submit" value="purchase book!">
     </form>
@@ -65,7 +65,7 @@ $book_v = $_POST['book_val']
     <form method="POST" action="BookView.php">
         <?php
         echo "<input type='hidden' value='" .$book_v."' name='book_val'>";
-        echo "<input type='hidden' value='" .$store."' name='s_id'>";
+        echo "<input type='hidden' value='" .$store."' name='sid_val'>";
         ?>
         <input type="submit" value="View other titles!">
     </form>
