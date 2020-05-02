@@ -25,9 +25,6 @@ $book_b = $_POST['book_val'];
 
         <form method="POST" action="BookView.php" id="sidList">
             <label for="storeID">Select Store ID</label>
-            <?php
-            echo "<input type='hidden' value='" .$book_b."' name='book_val'>";
-            ?>
             <select name="sid_val" id="sid_val" form="sidList">
             <?php
                 while($row = $st_result->fetch_assoc())
@@ -37,6 +34,9 @@ $book_b = $_POST['book_val'];
                 }
                 ?>
             </select>
+            <?php
+            echo "<input type='hidden' value='" .$book_b."' name='book_val'>";
+            ?>
             <button type="submit">Go!</button>
         </form>
 

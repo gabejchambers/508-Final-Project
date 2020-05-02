@@ -10,7 +10,7 @@
     include_once 'dbconnect.php';
     session_start();
     $store = $_POST['sid_val'];
-    $book_v = $_POST['book_val'];
+    $book_b = $_POST['book_val'];
 
     ?>
 
@@ -20,12 +20,12 @@
         <?php
         //just basic outline to get started, test links from store page
         //add purchase button, list 'similar' books, lmao add author oops,
-        $sql = "SELECT * FROM Inventory WHERE store = '".$store."' and book = '".$book_v."'";
+        $sql = "SELECT * FROM Inventory WHERE store = '".$store."' and book = '".$book_b."'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->get_result();
 
-        $b_sql = "SELECT * FROM Book WHERE ISBN = '".$book_v."'";
+        $b_sql = "SELECT * FROM Book WHERE ISBN = '".$book_b."'";
         $b_Dat = mysqli_query($conn,$b_sql);
         $b_row = mysqli_fetch_assoc($b_Dat);
 
