@@ -162,9 +162,9 @@ function test_input($data)
     $st_result = $st_rs->get_result();
     ?>
 
-    <form method="POST" action="StoreMain.php" id="sidList">
+    <form method="POST" action="StoreMain.php">
         <label for="storeID">Select Store ID</label>
-        <select name="sid_val" id="sid_val" form="sidList">
+        <select name="sid_val">
         <?php
             while($row = $st_result->fetch_assoc())
             {
@@ -173,9 +173,15 @@ function test_input($data)
             }
         ?>
         </select>
-        <button type="submit">Go!</button>
+        <button type="submit" name="test">Go!</button>
     </form>
 
+    <?php
+    session_start();
+    if (isset($_POST['test'])){
+     $_SESSION['sid_val'] = $_POST['sid_val'];
+    }
+    ?>
 </div>
 
 

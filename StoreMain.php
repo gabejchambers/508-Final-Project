@@ -7,13 +7,13 @@
 <div>
 <?php
 #phpinfo();
-
+$store = $_POST['sid_val'];
 include_once 'dbconnect.php';
 //need to add checks for customer/employee w/session but this covers guests for now
 session_start();
-$store = $_POST['sid_val'];
 
-$_SESSION['store_id'] = $store;
+$_SESSION['sid_val'] = $store;
+$store = $_SESSION['sid_val'];
 //have to set this page up as select instead of input, covers errors so we dont have to
 ?>
     <h2 style="text-align:center">Viewing Store Number: <?php echo "$store" ?>!</h2>
