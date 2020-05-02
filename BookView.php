@@ -53,7 +53,7 @@ $book_v = $_POST['book_val']
     <form method="POST" action="BuildOrder.php">
         <?php
         echo "<input type='hidden' value='" .$book_v."' name='book_val'>";
-        echo "<input type='hidden' value='" .$store."' name='sid_va;'>";
+        echo "<input type='hidden' value='" .$store."' name='sid_val'>";
         ?>
         <input type="submit" value="purchase book!">
     </form>
