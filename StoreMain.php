@@ -8,11 +8,9 @@
 <?php
 #phpinfo();
 include_once 'dbconnect.php';
-//need to add checks for customer/employee w/session but this covers guests for now
 
 $store = $_POST['sid_val'];
 
-//have to set this page up as select instead of input, covers errors so we dont have to
 ?>
     <h2 style="text-align:center">Viewing Store Number: <?php echo "$store" ?>!</h2>
 
@@ -50,7 +48,7 @@ $store = $_POST['sid_val'];
     <br>
     <form method="post" action="StoreMain.php">
         <?php
-        echo "<input type='hidden' value='" .$store."' name='sid_val'>"
+        echo "<input type='hidden' value='" .$store."' name='sid_val'>";
         ?>
         <button type="submit" name="view">Our Books!</button>
     </form>
@@ -69,7 +67,13 @@ $store = $_POST['sid_val'];
 
             if($result_v->num_rows > 0){
                 while ($row = $result_v->fetch_assoc() and $b_row = mysqli_fetch_assoc($b_Dat)) {
-                    echo "ISBN: " . $b_row["ISBN"] . "  Title: " . $b_row["title"] . "  Genre: " . $b_row["genre"] . "<br>";
+                    echo "<form method='POST' action='BookView.php'>";
+                    echo "<input type='hidden' value='" .$store."' name='sid_val'>";
+                    echo "<input type='hidden' value='" .$b_row['ISBN']."' name='book_val'>";
+                    echo "<button type='submit' style='border:0; background-color: transparent; color: royalblue; text-decoration: underline;'> 
+                            ISBN: " . $b_row["ISBN"] . "  Title: " . $b_row["title"] . "</button>";
+                    echo "</form>";
+                    echo "  Genre: " . $b_row["genre"] . "<br>";
                     echo "       # in Stock: " . $row["quantity"] . "  Price: " . $b_row['price'] . "<br>";
                     echo "<br>";
 
@@ -99,7 +103,7 @@ $store = $_POST['sid_val'];
     <br>
     <form method="post" action="StoreMain.php">
         <?php
-        echo "<input type='hidden' value='" .$store."' name='sid_val'>"
+        echo "<input type='hidden' value='" .$store."' name='sid_val'>";
         ?>
         <input type="text" placeholder="Enter ISBN" name="isbn_val">
         <button type="submit" name="s_book">Search</button>
