@@ -42,8 +42,7 @@ CREATE TABLE IF NOT EXISTS Transaction (
     cashier CHAR(4) NOT NULL,
     customer varchar(20),
     FOREIGN KEY (customer) REFERENCES Customer(email),
-    FOREIGN KEY (cashier) REFERENCES Employee (EID),
-    FOREIGN KEY (TID) REFERENCES Merchandise (transaction)
+    FOREIGN KEY (cashier) REFERENCES Employee (EID)
 );
 
 
