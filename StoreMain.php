@@ -9,10 +9,12 @@
 #phpinfo();
 
 include_once 'dbconnect.php';
-$store = $_POST['sid_val'];
+//need to add checks for customer/employee w/session but this covers guests for now
+session_start();
+$store = $_SESSION['sid_val'];
 //have to set this page up as select instead of input, covers errors so we dont have to
 ?>
-    <h2 style="text-align:center">Viewing Store Number:, <?php echo "$store" ?>!</h2>
+    <h2 style="text-align:center">Viewing Store Number: <?php echo "$store" ?>!</h2>
 
     <br>
     <br>
@@ -20,7 +22,7 @@ $store = $_POST['sid_val'];
 
     <?php
 
-    $sql = "SELECT * FROM Store WHERE SID = '".$store."'";
+    $sql = "SELECT * FROM Store WHERE SID = '".$_SESSION['sid_val']."'";
     $sDat = mysqli_query($conn, $sql);
     $r_num = mysqli_num_rows($sDat);
     $man_sql = "SELECT e.name FROM Employee e, Store s WHERE e.EID = s.manager and s.SID = '".$store."'";
@@ -125,8 +127,9 @@ $store = $_POST['sid_val'];
     <br>
     <br>
 
-
-
+    <?php
+    mysqli_close($conn)
+    ?>
 </div>
 </body>
 </html>

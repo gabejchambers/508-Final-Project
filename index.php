@@ -155,26 +155,27 @@ function test_input($data)
 <h2>Info By Store</h2>
 
 <div>
+    <?php
+    $st_sql = "select SID from Store";
+    $st_rs = $conn->prepare($st_sql);
+    $st_rs->execute();
+    $st_result = $st_rs->get_result();
+    ?>
+
     <form method="POST" action="StoreMain.php" id="sidList">
-        <label for="storeID">Enter Store ID</label>
-        <input type="text" name="sid_val">
+        <label for="storeID">Select Store ID</label>
+        <select name="sid_val" id="sid_val" form="sidList">
+        <?php
+            while($row = $st_result->fetch_assoc())
+            {
+                $s_id = $row['SID'];
+                echo "<option value='" . $s_id . "'>" . $s_id . "</option>";
+            }
+        ?>
+        </select>"
         <button type="submit">Go!</button>
     </form>
 
-<!--Coming back to this it is annoying:)
-    <?php
-/*    $st_sql = "select SID from Store";
-    $st_rs = mysqli_query($conn,$st_sql);
-    */?>
-    <select name="storeID" form="sidList">
-        <?php
-/*        while($rows = $st_rs->fetch_assoc())
-        {
-            $s_id = $st_rs['SID'];
-            echo "<option value='" . $row['SID'] . "'>" . $row['SID'] . "</option>";
-        }
-        */?>
-    </select>-->
 </div>
 
 

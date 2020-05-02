@@ -9,8 +9,8 @@
 </form>
 <div>
     <?php
-
     include_once 'dbconnect.php';
+    session_start()
 
     ?>
 
