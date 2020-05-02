@@ -27,10 +27,13 @@
             $viewDat = mysqli_query($conn,$sql);
 
             if(mysqli_num_rows($viewDat) > 0){
-                echo "<table>";
                 while ($row = mysqli_fetch_array($viewDat)) {
-                    echo "<tr><td>" . "ISBN: " . $row["ISBN"] . "  Title: " . $row["title"] . "  Genre: " . $row["genre"] . "  Price: " . $row["price"] . "  Publisher: " . $row["publisher"] . "</td></tr>" . "<br>";
-                echo "</table>";
+                    echo "<form method='POST' action='SpecifyStore.php'>";
+                    echo "<input type='hidden' value='" .$row['ISBN']."' name='book_val'>";
+                    echo "<button type='submit' style='border:0; background-color: transparent; color: royalblue; text-decoration: underline;'> 
+                            ISBN: " . $row["ISBN"] . "  Title: " . $row["title"] . "</button>";
+                    echo "</form>";
+                    echo "  Genre: " . $row["genre"] . "<br>" . "  Price: " . $row["price"] . "  Publisher: " . $row["publisher"] . "<br>";
                 }
             } else {
                 echo "No books available";
@@ -70,9 +73,12 @@
                 $r_num = mysqli_num_rows($sDat);
                 if ($r_num == 1) {
                     $row = mysqli_fetch_assoc($sDat);
-                    echo "<table>";
-                    echo "<tr><td>" . "ISBN: " . $row["ISBN"] . "  Title: " . $row["title"] . "  Genre: " . $row["genre"] . "  Price: " . $row["price"] . "  Publisher: " . $row["publisher"] . "</td></tr>" . "<br>";
-                    echo "</table>";
+                    echo "<form method='POST' action='SpecifyStore.php'>";
+                    echo "<input type='hidden' value='" .$row['ISBN']."' name='book_val'>";
+                    echo "<button type='submit' style='border:0; background-color: transparent; color: royalblue; text-decoration: underline;'> 
+                            ISBN: " . $row["ISBN"] . "  Title: " . $row["title"] . "</button>";
+                    echo "</form>";
+                    echo "  Genre: " . $row["genre"] . "  Price: " . $row["price"] . "  Publisher: " . $row["publisher"] . "<br>";
 
                 } else {
                     echo "book unavailable";

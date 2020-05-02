@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div>
+<?php
+#phpinfo();
+include_once 'dbconnect.php';
+session_start();
+
+$book_b = $_POST['book_val'];
+
+?>
+
+    <h2 style="text-align:center"><strong>Must Specify Store to View!!</strong></h2>
+
+
+    <div>
+        <h4>select store location id</h4>
+        <?php
+        $st_sql = "select SID from Store";
+        $st_rs = $conn->prepare($st_sql);
+        $st_rs->execute();
+        $st_result = $st_rs->get_result();
+        ?>
+
+        <form method="POST" action="BookView.php" id="sidList">
+            <label for="storeID">Select Store ID</label>
+            <?php
+            echo "<input type='hidden' value='" .$book_b."' name='book_val'>";
+            ?>
+            <select name="sid_val" id="sid_val" form="sidList">
+            <?php
+                while($row = $st_result->fetch_assoc())
+                {
+                    $s_id = $row['SID'];
+                    echo "<option value='" . $s_id . "'>" . $s_id . "</option>";
+                }
+                ?>
+            </select>
+            <button type="submit">Go!</button>
+        </form>
+
+    </div>
+
+    <?php
+    mysqli_close($conn)
+    ?>
+</div>
+</body>
+</html>
+

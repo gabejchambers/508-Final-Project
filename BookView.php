@@ -8,7 +8,7 @@
 <?php
 #phpinfo();
 include_once 'dbconnect.php';
-
+session_start();
 $store = $_POST['sid_val'];
 $book_v = $_POST['book_val']
 
@@ -46,6 +46,10 @@ $book_v = $_POST['book_val']
         ?>
     </div>
 
+
+    <?php
+    mysqli_close($conn)
+    ?>
 
 </div>
 </body>

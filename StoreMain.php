@@ -8,7 +8,7 @@
 <?php
 #phpinfo();
 include_once 'dbconnect.php';
-
+session_start();
 $store = $_POST['sid_val'];
 
 ?>
