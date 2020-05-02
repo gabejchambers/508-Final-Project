@@ -176,8 +176,9 @@ function test_input($data)
         <button type="submit" name="s_sub">Go!</button>
     </form>
     <?php
-        if(isset($_POST['s_sub'])){
-        $sid_val = test_input($_POST['sid_val']);
+        if(isset($_POST['s_sub'])) {
+            $sid_val = test_input($_POST['sid_val']);
+        }
     ?>
 </div>
 
