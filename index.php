@@ -172,7 +172,7 @@ function test_input($data)
                 echo "<option value='" . $s_id . "'>" . $s_id . "</option>";
             }
         ?>
-        </select>"
+        </select>
         <button type="submit">Go!</button>
     </form>
 

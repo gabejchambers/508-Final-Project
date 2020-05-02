@@ -11,7 +11,9 @@
 include_once 'dbconnect.php';
 //need to add checks for customer/employee w/session but this covers guests for now
 session_start();
-$store = $_SESSION['sid_val'];
+$store = $_POST['sid_val'];
+
+$_SESSION['store_id'] = $store;
 //have to set this page up as select instead of input, covers errors so we dont have to
 ?>
     <h2 style="text-align:center">Viewing Store Number: <?php echo "$store" ?>!</h2>
@@ -22,18 +24,19 @@ $store = $_SESSION['sid_val'];
 
     <?php
 
-    $sql = "SELECT * FROM Store WHERE SID = '".$_SESSION['sid_val']."'";
-    $sDat = mysqli_query($conn, $sql);
-    $r_num = mysqli_num_rows($sDat);
+    $st_sql = "SELECT * FROM Store WHERE SID = '".$store."'";
+    $sDat = $conn->prepare($st_sql);
+    $sDat->execute();
+    $result_s = $sDat->get_result();
+
     $man_sql = "SELECT e.name FROM Employee e, Store s WHERE e.EID = s.manager and s.SID = '".$store."'";
     $m_name = mysqli_query($conn,$man_sql);
     $m_num = mysqli_num_rows($m_name);
-    $row = mysqli_fetch_assoc($sDat);
     $row_m = mysqli_fetch_assoc($m_name);
-    if ($r_num == 1 and $m_num == 1) {
-        echo "<table>";
-        echo "<tr><td>" . "Store: " . $row["SID"] . "<br>" . "Address: " . $row["address"] . "<br>" . "Manager: " . $row_m["name"] . "</td></tr>";
-        echo "</table>";
+    if ($result_s->num_rows == 1) {
+        while ($row = $result_s->fetch_assoc()) {
+            echo "Store: " . $row["SID"] . "<br>" . "Address: " . $row["address"] . "<br>" . "Manager: " . $row_m["name"];
+        }
     } else {
         //temporary
         echo "bad input not a store";
@@ -54,17 +57,17 @@ $store = $_SESSION['sid_val'];
     <div>
         <?php
         if (isset($_POST["view"])) {
-            $sql = "SELECT * FROM Inventory WHERE store = '".$store."'";
-            $stmt = $conn->prepare($sql);
-            $stmt->execute();
-            $result = $stmt->get_result();
+            $v_sql = "SELECT * FROM Inventory WHERE store = '".$store."'";
+            $vw_stmt = $conn->prepare($v_sql);
+            $vw_stmt->execute();
+            $result_v = $vw_stmt->get_result();
 
             $b_sql = "SELECT * FROM Book b, Inventory i WHERE i.book = b.ISBN and i.store = '".$store."'";
             $b_Dat = mysqli_query($conn,$b_sql);
             $b_row = mysqli_fetch_assoc($b_Dat);
 
-            if($result->num_rows > 0){
-                while ($row = $result->fetch_assoc()) {
+            if($result_v->num_rows > 0){
+                while ($row = $result_v->fetch_assoc()) {
                     echo "ISBN: " . $b_row["ISBN"] . "  Title: " . $b_row["title"] . "  Genre: " . $b_row["genre"] . "<br>";
                     echo "       # in Stock: " . $row["quantity"] . "  Price: " . $b_row['price'] . "<br>";
                     echo "<br>";
@@ -113,10 +116,11 @@ $store = $_SESSION['sid_val'];
             $b_row = mysqli_fetch_assoc($b_Dat);
 
             if($result->num_rows == 1){
-                echo "Title: " . $b_row["title"] . "  Genre: " . $b_row["genre"] . "<br>";
-                echo "       # in Stock: " . $row["quantity"] . "  Price: " . $b_row['price'] . "<br>";
-                echo "<br>";
-
+                while ($row = $result->fetch_assoc()) {
+                    echo "Title: " . $b_row["title"] . "  Genre: " . $b_row["genre"] . "<br>";
+                    echo "       # in Stock: " . $row["quantity"] . "  Price: " . $b_row['price'] . "<br>";
+                    echo "<br>";
+                }
             } else {
                 echo "book unavailable";
             }
