@@ -177,6 +177,8 @@ function test_input($data)
     </form>
     <?php
             $sid_val = test_input($_POST['sid_val']);
+            session_start();
+            $_SESSION['sid val'] = $_POST[$sid_val];
     ?>
 </div>
 
