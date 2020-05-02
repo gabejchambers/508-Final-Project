@@ -68,8 +68,8 @@ $store = $_POST['sid_val'];
             $b_row = mysqli_fetch_assoc($b_Dat);
 
             if($result_v->num_rows > 0){
-                while ($row = $result_v->fetch_assoc()) {
-                    echo "ISBN: " . $b_row["ISBN"] . "  Title: " . $b_row["title"] . "  Genre: " . $b_row["genre"] . "<br>";
+                while ($row = $result_v->fetch_array()) {
+                    echo "ISBN: " . $row["book"] . "  Title: " . $b_row["title"] . "  Genre: " . $b_row["genre"] . "<br>";
                     echo "       # in Stock: " . $row["quantity"] . "  Price: " . $b_row['price'] . "<br>";
                     echo "<br>";
 
