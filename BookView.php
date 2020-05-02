@@ -35,7 +35,8 @@ $book_v = $_POST['book_val']
 
         if($result->num_rows == 1){
             while ($row = $result->fetch_assoc()) {
-                echo "Title: " . $b_row["title"] . "  Genre: " . $b_row["genre"] . "<br>";
+                echo "Title: " . $b_row["title"] . "<br>";
+                echo "  Genre: " . $b_row["genre"] . "Publisher: " . $b_row["publisher"] . "<br>";
                 echo "       # in Stock: " . $row["quantity"] . "  Price: " . $b_row['price'] . "<br>";
                 echo "<br>";
             }
@@ -46,6 +47,29 @@ $book_v = $_POST['book_val']
         ?>
     </div>
 
+<!--    probably need a session for a shopping cart if were not forcing purchases item by item?    -->
+    <br>
+    <h2>Buy Now!</h2>
+    <form method="POST" action="BuildOrder.php">
+        <?php
+        echo "<input type='hidden' value='" .$book_v."' name='book_val'>";
+        echo "<input type='hidden' value='" .$store."' name='s_id'>";
+        ?>
+        <input type="submit" value="purchase book!">
+    </form>
+    <br>
+
+    <br>
+    <!-- does not do anything yet button goes no-whereee -->
+    <h2>View Similar</h2>
+    <form method="POST" action="BookView.php">
+        <?php
+        echo "<input type='hidden' value='" .$book_v."' name='book_val'>";
+        echo "<input type='hidden' value='" .$store."' name='s_id'>";
+        ?>
+        <input type="submit" value="View other titles!">
+    </form>
+    <br>
 
     <?php
     mysqli_close($conn)
