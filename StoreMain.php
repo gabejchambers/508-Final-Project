@@ -9,14 +9,8 @@
 #phpinfo();
 include_once 'dbconnect.php';
 //need to add checks for customer/employee w/session but this covers guests for now
-session_start();
 
-if ( isset($_POST['sid_val'])) {
-    $store = trim($_POST['sid_val']);
-}
-
-$_SESSION['sid_val'] = $store;
-$store = $_SESSION['sid_val'];
+$store = $_POST['sid_val'];
 
 //have to set this page up as select instead of input, covers errors so we dont have to
 ?>
@@ -55,6 +49,9 @@ $store = $_SESSION['sid_val'];
     <h4>View all</h4>
     <br>
     <form method="post" action="StoreMain.php">
+        <?php
+        echo "<input value='" .$store."' name='sid_val'>"
+        ?>
         <button type="submit" name="view">Our Books!</button>
     </form>
     <br>
