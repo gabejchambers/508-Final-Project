@@ -89,7 +89,37 @@
     </div>
     <br>
     <br>
+<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
+    <form method="post" action="BookMain.php">
+        <input type="text" placeholder="Enter title" name="title_val">
+        <button type="submit" name="title_search_button">Search</button>
+    </form>
+    <br>
+    <div>
+        <?php
+        if (isset($_POST["title_search_button"])) {
+            $bookTitle = test_input($_POST["title_val"]);
 
+            $title_s = "SELECT * FROM Book WHERE title LIKE '".$bookTitle."'";
+            $title_result = mysqli_query($conn, $title_s);
+            if(mysqli_num_rows($title_result) > 0){
+                while ($row = mysqli_fetch_array($title_result)) {
+                    echo "<form method='POST' action='SpecifyStore.php'>";
+                    echo "<input type='hidden' value='" .$row['ISBN']."' name='book_val'>";
+                    echo "<button type='submit' style='border:0; background-color: transparent; color: royalblue; text-decoration: underline;'> 
+                            ISBN: " . $row["ISBN"] . "  Title: " . $row["title"] . "</button>";
+                    echo "</form>";
+                    echo "  Genre: " . $row["genre"] . "<br>" . "  Price: " . $row["price"] . "  Publisher: " . $row["publisher"] . "<br>";
+                }
+            } else {
+                echo "No books available";
+            }
+        }
+
+        ?>
+    </div>
+    <br>
+    
     <?php
     mysqli_close($conn);
     ?>
