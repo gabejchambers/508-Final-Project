@@ -14,6 +14,23 @@ $book_b = $_POST['book_val'];
 
 ?>
 
+    <?php if(isset($_SESSION['c_loggedin'])){
+        ?>
+        <form method="POST" action="Logout.php">
+            <input type="submit" value="Logout">
+        </form>
+        <br>
+        <form method="POST" action="CustomerHome.php">
+            <input type="submit" value="Home">
+        </form>
+        <br>
+    <?php } else { ?>
+        <form method="POST" action="index.php">
+            <input type="submit" value="Index">
+        </form>
+        <br>
+    <?php } ?>
+
     <h2 style="text-align:center"><strong>Must Specify Store to View!!</strong></h2>
 
 
