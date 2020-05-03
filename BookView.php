@@ -16,12 +16,11 @@ $bq_num = $_POST['q_val'];
 ?>
 
     <?php
-    echo $branch;
     $st_sql = "select SID from Store where branch_name LIKE '".$branch."'";
     $result = $conn->query($st_sql);
     $row = $result->fetch_assoc();
     $store = $row["SID"];
-    echo $store;
+    $_POST['sid_val'] = $store;
     ?>
 
 
