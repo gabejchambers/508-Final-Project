@@ -72,8 +72,8 @@
             <?php
             }
             ?>
-            # of copies: <input type="number" id="number of copies" name="q_val" placeholder="<?php echo '$num_in' ?>" max="<?php echo '$num_in' ?>" min="1">
             <?php
+            echo "# of copies: <input type='number' name='q_val' max='".$num_in."' min='1'>";
             echo "<input type='hidden' value='" .$book_b."' name='book_val'>";
             echo "<input type='hidden' value='" .$store."' name='sid_val'>";
             ?>
