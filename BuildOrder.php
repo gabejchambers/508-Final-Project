@@ -16,6 +16,16 @@
 
     <h2 style="text-align:center"> Checkout </h2>
 
+    <?php
+    function test_input($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+    ?>
+
     <div>
         <?php
         //just basic outline to get started, test links from store page
@@ -32,6 +42,7 @@
         if($result->num_rows == 1){
             while ($row = $result->fetch_assoc()) {
                 echo "Title: " . $b_row["title"] . "<br>";
+                $num_in = $row["quantity"];
                 echo "       # in Stock: " . $row["quantity"] . "  Price: " . $b_row['price'] . "<br>";
                 echo "<br>";
             }
@@ -41,17 +52,66 @@
 
         ?>
     </div>
+    <br>
 
+    <br>
     <div>
-        <form method="post" action=BuildOrder.php>
-            Name: <input type="text" name="name">
-            <br><br>
-            Address: <input type="text" name="address">
-            <br><br>
-            E-mail: <input type="text" name="email">
-            <br><br>
-            <input type="submit" name="submit_frm" value="Submit Order">
+        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <?php
+            if (!isset($_SESSION['c_loggedin'])) {
+            ?>
+                Name: <input type='text'>
+                <br>
+                E-mail: <input type='text' name='email'>
+                <br>
+                Address: <input type='text'>
+                <br>
+            <?php
+            }
+            ?>
+            <input type="number" id="number of copies" name="q_val" max="<?php echo '$num_in' ?>" min="1">
+            <?php
+            echo "<input type='hidden' value='" .$book_b."' name='book_val'>";
+            echo "<input type='hidden' value='" .$store."' name='sid_val'>";
+            ?>
+            <input type="submit" name="submit_o" value="Submit Order">
         </form>
+
+        <?php
+        if (isset($_POST['submit_o']))
+            $num_order = $_POST['q_val'];
+            $num_in -= $num_order;
+            $t_id = rand(3000,3999);
+
+            if(isset($_SESSION['c_loggedin'])){
+                $email = $_SESSION['c_email'];
+            }
+            else{
+                $email = $_POST['email'];
+            }
+
+            $t_sql = "INSERT INTO Transaction (TID, customer) VALUES ('".$t_id."', '".$email."')";
+            if(mysqli_query($conn, $t_sql)) {
+                echo "test transaction query";
+            } else {
+                echo " transaction Error: " . $t_sql . "<br>" . mysqli_error($conn);
+            }
+
+
+            $m_sql = "UPDATE Merchandise SET book = '".$book_b."' WHERE transaction = '".$t_id."'";
+            if(mysqli_query($conn, $m_sql)) {
+                echo "test merch query";
+                $i_sql = "UPDATE Inventory SET quantity = '".$num_in."' WHERE store ='".$store."' and book = '".$book_b."'";
+                if(mysqli_query($conn, $i_sql)) {
+                    echo "test inventory update";
+                } else {
+                    echo "inv error " . $i_sql . "<br>" . mysqli_error($conn);
+                }
+            } else {
+                echo "merch Error: " . $m_sql . "<br>" . mysqli_error($conn);
+            }
+
+            ?>
     </div>
 
 </div>
