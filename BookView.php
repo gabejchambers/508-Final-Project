@@ -16,10 +16,10 @@ $bq_num = $_POST['q_val'];
 ?>
 
     <?php
-    $store = "select SID from Store where branch_name = '".$store."'";
+    $st_sql = "select SID from Store where branch_name = '".$store."'";
     $st_rs = $conn->prepare($st_sql);
     $st_rs->execute();
-    $st_result = $st_rs->get_result();
+    $store = $st_rs->get_result();
     ?>
 
 
