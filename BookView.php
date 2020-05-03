@@ -16,6 +16,7 @@ $bq_num = $_POST['q_val'];
 ?>
 
     <?php
+    echo $store;
     $st_sql = "select SID from Store where branch_name LIKE '".$store."'";
     $st_rs = $conn->prepare($st_sql);
     $st_rs->execute();
