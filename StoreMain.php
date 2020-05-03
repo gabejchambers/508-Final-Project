@@ -59,10 +59,6 @@ $store = $_POST['sid_val'];
     <br>
 
 
-    <h3 style="text-align: left">inventory by location</h3>
-    <br>
-    <h4>View all</h4>
-    <br>
     <form method="post" action="StoreMain.php">
         <?php
         echo "<input type='hidden' value='" .$store."' name='sid_val'>";
@@ -114,9 +110,7 @@ $store = $_POST['sid_val'];
         return $data;
     }
     ?>
-
-    <br>
-    <br>
+    
     <h4>Local search</h4>
     <br>
     <form method="post" action="StoreMain.php">
