@@ -12,9 +12,11 @@
     $store = $_POST['sid_val'];
     $book_b = $_POST['book_val'];
     echo $_POST['sid_val'];
+
     ?>
 
-    <?php if (isset($_POST['q_val'])){
+    <?php
+    if (isset($_POST['q_val'])){
         $bq_num = $_POST['q_val'];
     }
     else{
@@ -149,6 +151,6 @@
 
             ?>
     </div>
-
+    
 </div>
 </body>
