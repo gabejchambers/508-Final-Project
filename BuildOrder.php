@@ -64,22 +64,24 @@
             if (!isset($_SESSION['c_loggedin'])) {
             ?>
                 Name: <input type='text'>
-                <br>
+                <br><br>
                 E-mail: <input type='text' name='email'>
-                <br>
+                <br><br>
                 Address: <input type='text'>
-                <br>
+                <br><br>
             <?php
             }
             ?>
-            <input type="number" id="number of copies" name="q_val" max="<?php echo '$num_in' ?>" min="1">
+            # of copies: <input type="number" id="number of copies" name="q_val" placeholder="<?php echo '$num_in' ?>" max="<?php echo '$num_in' ?>" min="1">
             <?php
             echo "<input type='hidden' value='" .$book_b."' name='book_val'>";
             echo "<input type='hidden' value='" .$store."' name='sid_val'>";
             ?>
             <input type="submit" name="submit_o" value="Submit Order">
         </form>
+    </div>
 
+    <div>
         <?php
         if (isset($_POST['submit_o']))
             $num_order = $_POST['q_val'];
