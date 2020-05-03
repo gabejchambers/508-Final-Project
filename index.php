@@ -44,7 +44,6 @@
 
 
 <br><br>
-<div>Real functionality starts here:</div> <!--#####################################################################-->
 <h2>Customer Login</h2>
 
 
