@@ -95,9 +95,6 @@ CREATE TABLE IF NOT EXISTS Inventory (
 );
 
 
-/*
-Does he want triggers in our database or implemented with PHP???
-*/
 
 DROP TRIGGER IF EXISTS insTrns_mrch_custTrns;
 DELIMITER //
