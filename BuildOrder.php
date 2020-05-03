@@ -106,7 +106,7 @@
 
             if(isset($_SESSION['c_loggedin'])){
                 $email = $_SESSION['c_email'];
-                $ct_sql = "INSERT INTO Transaction (customer, is_return) VALUES ('".$email."', 1 )";
+                $ct_sql = "INSERT INTO Transaction (customer, is_return) VALUES ('".$email."', 0 )";
                 if(mysqli_query($conn, $ct_sql)) {
                     echo "test transaction query";
                 } else {
@@ -114,7 +114,7 @@
                 }
             }
             else{
-                $t_sql = "INSERT INTO Transaction ( is_return ) VALUES ( 1 )";
+                $t_sql = "INSERT INTO Transaction ( is_return ) VALUES ( 0 )";
                 if(mysqli_query($conn, $t_sql)) {
                     echo "test transaction query";
                 } else {
@@ -123,7 +123,7 @@
 
             }
 
-            $m_sql = "UPDATE Merchandise SET book = '".$book_b."' WHERE book = NULL";
+            $m_sql = "UPDATE Merchandise SET book = '".$book_b."' WHERE book IS NULL";
             if(mysqli_query($conn, $m_sql)) {
                 echo "test merch query";
                 $bq_num -= 1;
