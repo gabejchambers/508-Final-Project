@@ -100,14 +100,14 @@ Does he want triggers in our database or implemented with PHP???
 DROP TRIGGER IF EXISTS insTrns_mrch_custTrns;
 DELIMITER //
 CREATE TRIGGER insTrns_mrch_custTrns
-AFTER INSERT ON Transaction
-FOR EACH ROW
+    AFTER INSERT ON Transaction
+    FOR EACH ROW
 BEGIN
-INSERT INTO Merchandise ('MID', 'transaction') VALUES (new.TID+1000, new.TID);
+    INSERT INTO Merchandise (MID, transaction) VALUES (new.TID+1000, new.TID);
 
-IF (SELECT COUNT(*) FROM Customer WHERE email = new.customer) > 0 THEN
-INSERT INTO Customer_Transactions VALUES (new.customer, new.TID);
-END IF;
+    IF(new.customer IS NOT NULL) THEN
+        INSERT INTO Customer_Transactions VALUES (new.customer, new.TID);
+    END IF;
 END//
 DELIMITER ;
 
