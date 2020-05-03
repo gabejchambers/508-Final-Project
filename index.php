@@ -8,24 +8,39 @@
 <h2>Example Templates:</h2>
 <div>
     <?php
-
     include_once 'dbconnect.php';
-
-
-    echo "This is a php query with formatted output:<br>";
-    #Query w php:
-    $sql = "SELECT name, salary FROM Employee WHERE EID = 5656";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-            echo "Name: " . $row["name"]. " - Salary: " . $row["salary"]. "<br>";
-        }
-    } else {
-        echo "0 results";
-    }
+    session_start();
     ?>
+
+    <?php if(isset($_SESSION['c_loggedin'])){
+        ?>
+        <form method="POST" action="Logout.php">
+            <input type="submit" value="Logout">
+        </form>
+        <br>
+        <form method="POST" action="CustomerHome.php">
+            <input type="submit" value="Home">
+        </form>
+        <br>
+    <?php } elseif (isset($_SESSION['e_loggedin'])) { ?>
+    <form method="POST" action="Logout.php">
+        <input type="submit" value="Logout">
+    </form>
+    <?php
+        if($_SESSION['ismanager']){
+            ?>
+            <form method="POST" action="ManagerHome.php">
+                <input type="submit" value="Home">
+            </form>
+            <br>
+        <?php } else { ?>
+            <form method="POST" action="EmployeeHome.php">
+                <input type="submit" value="Home">
+            </form>
+            <br>
+        <?php } ?>
+        <br>
+    <?php } ?>
 </div>
 
 <br>
