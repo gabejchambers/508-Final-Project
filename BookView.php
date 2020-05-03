@@ -4,9 +4,6 @@
     <div>Book Details</div>
 </head>
 <body>
-<form method="POST" action="index.php">
-    <input type="submit" value="Index">
-</form>
 <div>
 <?php
 #phpinfo();
@@ -17,6 +14,23 @@ $book_v = $_POST['book_val'];
 $bq_num = $_POST['q_val'];
 
 ?>
+
+    <?php if(isset($_SESSION['c_loggedin'])){
+        ?>
+        <form method="POST" action="Logout.php">
+            <input type="submit" value="Logout">
+        </form>
+        <br>
+        <form method="POST" action="CustomerHome.php">
+            <input type="submit" value="Home">
+        </form>
+        <br>
+    <?php } else { ?>
+        <form method="POST" action="index.php">
+            <input type="submit" value="Index">
+        </form>
+        <br>
+    <?php } ?>
 
     <h2 style="text-align:center">Viewing Book ID <?php echo "$book_v" ?> at Store Number: <?php echo "$store" ?>!</h2>
 
