@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
 <body>
-<form method="POST" action="index.php">
-    <input type="submit" value="Index">
-</form>
 <div>
 <?php
 #phpinfo();
