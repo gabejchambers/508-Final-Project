@@ -3,7 +3,7 @@
 CREATE TABLE IF NOT EXISTS Store(
     SID CHAR(4) PRIMARY KEY,
     address VARCHAR(100),
-    manager CHAR(4) NOT NULL UNIQUE,
+    manager CHAR(4),
     FOREIGN KEY (Manager) REFERENCES Employee(EID)
 );
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS Customer_Transactions (
 
 CREATE TABLE IF NOT EXISTS Transaction (
     TID CHAR(4) PRIMARY KEY,
-    cashier CHAR(4) NOT NULL,
+    cashier CHAR(4),
     customer varchar(20),
     FOREIGN KEY (customer) REFERENCES Customer(email),
     FOREIGN KEY (cashier) REFERENCES Employee (EID)
@@ -93,7 +93,38 @@ CREATE TABLE IF NOT EXISTS Inventory (
 );
 
 
+/*
+Does he want triggers in our database or implemented with PHP???
+*/
 
+DROP TRIGGER IF EXISTS insTrns_mrch_custTrns;
+DELIMITER //
+CREATE TRIGGER insTrns_mrch_custTrns
+AFTER INSERT ON Transaction
+FOR EACH ROW
+BEGIN
+INSERT INTO Merchandise ('MID', 'transaction') VALUES (new.TID+1000, new.TID);
+
+IF (SELECT COUNT(*) FROM Customer WHERE email = new.customer) > 0 THEN
+INSERT INTO Customer_Transactions VALUES (new.customer, new.TID);
+END IF;
+END//
+DELIMITER ;
+
+/*
+$sql = "CREATE TRIGGER insTrns_mrch_custTrns \n"
+
+    . "AFTER INSERT ON Transaction\n"
+
+    . "FOR EACH ROW \n"
+
+    . "BEGIN\n"
+
+    . "	IF (SELECT COUNT(*) FROM Customer WHERE email = new.customer) > 0 THEN\n"
+
+    . "		INSERT INTO Customer_Transactions VALUES (new.customer, new.TID)END IFEND";
+
+*/
 
 #Queries:
 
