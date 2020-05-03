@@ -11,8 +11,21 @@
     session_start();
     $store = $_POST['sid_val'];
     $book_b = $_POST['book_val'];
-    $bq_num = $_POST['q_val'];
     echo $_POST['sid_val'];
+    ?>
+
+    <?php if (isset($_POST['q_val'])){
+        $bq_num = $_POST['q_val'];
+    }
+    else{
+        $bq_sql = "SELECT quantity FROM Inventory WHERE store = '".$store."' and book = '".$book_v."'";
+        $bq_Dat = mysqli_query($conn,$bq_sql);
+        $br_row = mysqli_num_rows($bq_Dat);
+        if($br_row == 1){
+            $row = mysqli_fetch_assoc($bq_Dat);
+            $bq_num = $row['quantity'];
+        }
+    }
     ?>
 
     <?php if(isset($_SESSION['c_loggedin'])){
