@@ -11,7 +11,6 @@
     session_start();
     $store = $_POST['sid_val'];
     $book_b = $_POST['book_val'];
-    echo $_POST['sid_val'];
 
     ?>
 
