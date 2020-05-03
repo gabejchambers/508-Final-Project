@@ -123,7 +123,7 @@
 
             }
 
-            $m_sql = "UPDATE Merchandise SET book = '".$book_b."' WHERE transaction = '".$t_id."'";
+            $m_sql = "UPDATE Merchandise SET book = '".$book_b."' WHERE book = NULL";
             if(mysqli_query($conn, $m_sql)) {
                 echo "test merch query";
                 $bq_num -= 1;
