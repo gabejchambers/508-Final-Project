@@ -34,11 +34,11 @@ $book_v = $_POST['book_val'];
         $bg_def = $_POST['genre'];
     }
     else{
-        $bg_sql = "SELECT genre FROM Book WHERE book = '".$book_v."'";
+        $bg_sql = "SELECT * FROM Book WHERE book = '".$book_v."'";
         $bg_Dat = mysqli_query($conn,$bg_sql);
         $row = mysqli_fetch_assoc($bg_Dat);
         $bg_def = $row['genre'];
-        
+
     }
     ?>
 
