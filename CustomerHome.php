@@ -46,7 +46,7 @@
                 while($row = $st_result->fetch_assoc())
                 {
                     $s_id = $row['SID'];
-                    echo "<option value='" . $row['branch_name'] . "'>" . $s_id . "</option>";
+                    echo "<option value='" . $s_id . "'>" . $row['branch_name'] . "</option>";
                 }
                 ?>
             </select>
