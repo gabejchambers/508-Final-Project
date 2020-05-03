@@ -102,7 +102,7 @@
         if (isset($_POST['submit_o']))
             #$num_ord = $_POST['buy_q'];
             #$new_q = $bq_num - $num_ord;
-            $t_id = rand(3000,3999);
+
 
             if(isset($_SESSION['c_loggedin'])){
                 $email = $_SESSION['c_email'];
@@ -116,7 +116,7 @@
             else{
                 $t_sql = "INSERT INTO Transaction ( is_return ) VALUES ( 0 )";
                 if(mysqli_query($conn, $t_sql)) {
-                    echo "test transaction query";
+                    //echo "test transaction query";
                 } else {
                     echo " transaction Error: " . $t_sql . "<br>" . mysqli_error($conn);
                 }
@@ -125,11 +125,11 @@
 
             $m_sql = "UPDATE Merchandise SET book = '".$book_b."' WHERE book IS NULL";
             if(mysqli_query($conn, $m_sql)) {
-                echo "test merch query";
+                //echo "test merch query";
                 $bq_num -= 1;
                 $i_sql = "UPDATE Inventory SET quantity = '".$bq_num."' WHERE store ='".$store."' and book = '".$book_b."'";
                 if(mysqli_query($conn, $i_sql)) {
-                    echo "test inventory update";
+                  //  echo "test inventory update";
                 } else {
                     echo "inv error " . $i_sql . "<br>" . mysqli_error($conn);
                 }
