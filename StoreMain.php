@@ -73,6 +73,7 @@ $store = $_POST['sid_val'];
                     echo "<form method='POST' action='BookView.php'>";
                     echo "<input type='hidden' value='" .$store."' name='sid_val'>";
                     echo "<input type='hidden' value='" .$b_row['ISBN']."' name='book_val'>";
+                    echo "<input type='hidden' value='" .$row['quantity']."' name='q_val'>";
                     echo "<button type='submit' style='border:0; background-color: transparent; color: royalblue; text-decoration: underline;'> 
                             ISBN: " . $b_row["ISBN"] . "  Title: " . $b_row["title"] . "</button>";
                     echo "</form>";

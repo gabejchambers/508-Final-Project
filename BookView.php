@@ -13,7 +13,8 @@
 include_once 'dbconnect.php';
 session_start();
 $store = $_POST['sid_val'];
-$book_v = $_POST['book_val']
+$book_v = $_POST['book_val'];
+$bq_num = $_POST['q_val'];
 
 ?>
 
@@ -57,6 +58,7 @@ $book_v = $_POST['book_val']
         <?php
         echo "<input type='hidden' value='" .$book_v."' name='book_val'>";
         echo "<input type='hidden' value='" .$store."' name='sid_val'>";
+        echo "<input type='hidden' value='" .$bq_num."' name='q_val'>";
         ?>
         <input type="submit" value="purchase book!">
     </form>
