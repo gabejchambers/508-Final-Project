@@ -34,8 +34,8 @@
     $iss_result = mysqli_query($conn, $c_book_sql);
     if(mysqli_num_rows($iss_result)!=0) {
         while($sup_rows = $iss_result->fetch_assoc()) {
-            echo "Transaction number: " . $sup_rows['t.TID'] . "<br>";
-            echo "Title: " . $sup_rows['b.title'] . "<br>";
+            echo "Transaction number: " . $sup_rows['TID'] . "<br>";
+            echo "Title: " . $sup_rows['title'] . "<br>";
         }
     }
     ?>
