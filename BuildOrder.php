@@ -141,6 +141,10 @@
                 $i_sql = "UPDATE Inventory SET quantity = '".$bq_num."' WHERE store ='".$store."' and book = '".$book_b."'";
                 if(mysqli_query($conn, $i_sql)) {
                   //  echo "test inventory update";
+                    echo "<form action='index.php'>";
+                    echo "alert('Success! Return to main page.')";
+                    echo "<input type='submit'>";
+                    echo "</form>";
                 } else {
                     echo "inv error " . $i_sql . "<br>" . mysqli_error($conn);
                 }
@@ -150,6 +154,6 @@
 
             ?>
     </div>
-    
+
 </div>
 </body>
