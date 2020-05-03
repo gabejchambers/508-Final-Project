@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS Store(
     SID CHAR(4) PRIMARY KEY,
     address VARCHAR(100),
     manager CHAR(4),
+    branch_name VARCHAR(15) UNIQUE,
     FOREIGN KEY (Manager) REFERENCES Employee(EID)
 );
 
@@ -30,7 +31,7 @@ CREATE TABLE IF NOT EXISTS Customer (
 
 CREATE TABLE IF NOT EXISTS Customer_Transactions (
     email VARCHAR(20),
-    TID CHAR(4),
+    TID INT(11),
     PRIMARY KEY (email, TID),
     FOREIGN KEY (email) REFERENCES Customer (email),
     FOREIGN KEY (TID) REFERENCES Transaction (TID)
@@ -38,16 +39,17 @@ CREATE TABLE IF NOT EXISTS Customer_Transactions (
 
 
 CREATE TABLE IF NOT EXISTS Transaction (
-    TID CHAR(4) PRIMARY KEY,
+    TID INT(11) PRIMARY KEY AUTO_INCREMENT,
     cashier CHAR(4),
     customer varchar(20),
+    is_return tinyint(1),
     FOREIGN KEY (customer) REFERENCES Customer(email),
     FOREIGN KEY (cashier) REFERENCES Employee (EID)
 );
 
 
 CREATE TABLE Merchandise (
-    transaction char(4),
+    transaction int(11),
     MID char(4),
     book varchar(13) NOT NULL,
     PRIMARY KEY(transaction, MID),
@@ -109,6 +111,34 @@ BEGIN
         INSERT INTO Customer_Transactions VALUES (new.customer, new.TID);
     END IF;
 END//
+DELIMITER ;
+
+
+#when deleting an employee, take care of all tables where they could be referneced
+DELIMITER //
+CREATE TRIGGER delete_employee_check
+    BEFORE DELETE ON Employee
+    FOR EACH ROW
+BEGIN
+    DECLARE temp_eid char(4);
+
+    SET temp_eid = 0000;
+
+    #if firing a manager:
+    SELECT e.EID INTO temp_eid
+    FROM Store s, Employee e
+    where e.EID = s.manager and e.EID = old.EID;
+    IF temp_eid is not NULL THEN
+        update Store set manager = null WHERE manager = old.EID;
+    end if;
+
+    #if firing a supervisor or someone who is supervised:
+    DELETE FROM Supervise where shift_lead = old.EID or employee = old.EID;
+
+    #if firing an employee who has made a transaction:
+    update Transaction set cashier = null WHERE cashier = old.EID;
+
+END //
 DELIMITER ;
 
 /*
