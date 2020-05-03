@@ -20,6 +20,7 @@ $bq_num = $_POST['q_val'];
     $st_rs = $conn->prepare($st_sql);
     $st_rs->execute();
     $store = $st_rs->get_result();
+    echo $store;
     ?>
 
 
