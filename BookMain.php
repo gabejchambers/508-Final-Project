@@ -20,6 +20,7 @@
         <input type="submit" value="Index">
     </form>
     <br>
+    <p>Testing</p>
 <?php } ?>
 
 <div>
