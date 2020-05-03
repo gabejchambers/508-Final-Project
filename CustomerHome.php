@@ -29,6 +29,45 @@
     <h2>Home Page</h2>
     <p>Welcome back, <?=$_SESSION['c_email']?>!</p>
 
+    <h2>Info By Store</h2>
+
+    <div>
+        <?php
+        $st_sql = "select SID from Store";
+        $st_rs = $conn->prepare($st_sql);
+        $st_rs->execute();
+        $st_result = $st_rs->get_result();
+        ?>
+
+        <form method="POST" action="StoreMain.php" id="sidList">
+            <label for="storeID">Select Store ID</label>
+            <select name="sid_val" id="sid_val" form="sidList">
+                <?php
+                while($row = $st_result->fetch_assoc())
+                {
+                    $s_id = $row['SID'];
+                    echo "<option value='" . $s_id . "'>" . $s_id . "</option>";
+                }
+                ?>
+            </select>
+            <button type="submit">Go!</button>
+        </form>
+
+    </div>
+
+
+    <br>
+    <br>
+    <h2>Find Books!</h2>
+    <form method="POST" action="BookMain.php">
+        <input type="submit" value="View or find books!">
+    </form>
+    <br>
+    <br>
+    <form method="POST" action="CustomerSignUp.php">
+        <input type="submit" value="Customer Sign Up">
+    </form>
+    
     <?php
     mysqli_close($conn);
     ?>
