@@ -83,7 +83,7 @@
         if (isset($_POST["s_book"])) {
                 $bookID = test_input($_POST["isbn_val"]);
 
-                $sql = "SELECT * FROM Book WHERE ISBN = '".$bookID."'";
+            $sql = "SELECT a.name, b.ISBN, b.title, b.genre, b.price, b.publisher  FROM Book b, Author a where b.ISBN = a.book";
                 $sDat = mysqli_query($conn, $sql);
                 $r_num = mysqli_num_rows($sDat);
                 if ($r_num == 1) {
@@ -93,6 +93,7 @@
                     echo "<button type='submit' style='border:0; background-color: transparent; color: royalblue; text-decoration: underline;'> 
                             ISBN: " . $row["ISBN"] . "  Title: " . $row["title"] . "</button>";
                     echo "</form>";
+                    echo "Author: " . $row["name"] . "<br>";
                     echo "  Genre: " . $row["genre"] . "  Price: " . $row["price"] . "  Publisher: " . $row["publisher"] . "<br>";
 
                 } else {
@@ -115,7 +116,8 @@
         if (isset($_POST["title_search_button"])) {
             $bookTitle = test_input($_POST["title_val"]);
 
-            $title_s = "SELECT * FROM Book WHERE title LIKE '".$bookTitle."'";
+            #$title_s = "SELECT * FROM Book WHERE title LIKE '".$bookTitle."'";
+            $title_s = "SELECT a.name, b.ISBN, b.title, b.genre, b.price, b.publisher FROM Book b, Author a where b.ISBN = a.book and b.title LIKE '".$bookTitle."' ";
             $title_result = mysqli_query($conn, $title_s);
             if(mysqli_num_rows($title_result) > 0){
                 while ($row = mysqli_fetch_array($title_result)) {
@@ -124,6 +126,7 @@
                     echo "<button type='submit' style='border:0; background-color: transparent; color: royalblue; text-decoration: underline;'> 
                             ISBN: " . $row["ISBN"] . "  Title: " . $row["title"] . "</button>";
                     echo "</form>";
+                    echo "Author: " . $row["name"] . "<br>";
                     echo "  Genre: " . $row["genre"] . "<br>" . "  Price: " . $row["price"] . "  Publisher: " . $row["publisher"] . "<br>";
                 }
             } else {
