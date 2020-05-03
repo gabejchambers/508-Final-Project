@@ -9,7 +9,7 @@
 #phpinfo();
 include_once 'dbconnect.php';
 session_start();
-$store = $_POST['sid_val'];
+$store = $_POST['branch_name_val'];
 $book_v = $_POST['book_val'];
 $bq_num = $_POST['q_val'];
 
