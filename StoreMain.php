@@ -48,7 +48,7 @@ $store = $_POST['sid_val'];
     $row_m = mysqli_fetch_assoc($m_name);
     if ($result_s->num_rows == 1) {
         while ($row = $result_s->fetch_assoc()) {
-            echo "Store: " . $row["SID"] . "<br>" . "Address: " . $row["address"] . "<br>" . "Manager: " . $row_m["name"];
+            echo "Branch: " . $row["branch_name"] . "<br>" . "Store ID: " . $row["SID"] . "<br>" . "Address: " . $row["address"] . "<br>" . "Manager: " . $row_m["name"];
         }
     } else {
         //temporary
