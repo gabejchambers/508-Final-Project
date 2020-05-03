@@ -33,7 +33,7 @@
 
     <div>
         <?php
-        $st_sql = "select SID from Store";
+        $st_sql = "select SID, branch_name from Store";
         $st_rs = $conn->prepare($st_sql);
         $st_rs->execute();
         $st_result = $st_rs->get_result();
@@ -46,7 +46,7 @@
                 while($row = $st_result->fetch_assoc())
                 {
                     $s_id = $row['SID'];
-                    echo "<option value='" . $s_id . "'>" . $s_id . "</option>";
+                    echo "<option value='" . $row['branch_name'] . "'>" . $s_id . "</option>";
                 }
                 ?>
             </select>
