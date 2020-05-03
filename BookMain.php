@@ -82,8 +82,7 @@
         <?php
         if (isset($_POST["s_book"])) {
                 $bookID = test_input($_POST["isbn_val"]);
-
-            $sql = "SELECT a.name, b.ISBN, b.title, b.genre, b.price, b.publisher  FROM Book b, Author a where b.ISBN = a.book";
+            $sql = "SELECT a.name, b.ISBN, b.title, b.genre, b.price, b.publisher  FROM Book b, Author a where b.ISBN = a.book and b.ISBN = '".$bookID."' ";
                 $sDat = mysqli_query($conn, $sql);
                 $r_num = mysqli_num_rows($sDat);
                 if ($r_num == 1) {
