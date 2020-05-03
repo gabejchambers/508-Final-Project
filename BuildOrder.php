@@ -18,6 +18,23 @@
 
     ?>
 
+    <?php if(isset($_SESSION['c_loggedin'])){
+        ?>
+        <form method="POST" action="Logout.php">
+            <input type="submit" value="Logout">
+        </form>
+        <br>
+        <form method="POST" action="CustomerHome.php">
+            <input type="submit" value="Home">
+        </form>
+        <br>
+    <?php } else { ?>
+        <form method="POST" action="index.php">
+            <input type="submit" value="Index">
+        </form>
+        <br>
+    <?php } ?>
+
     <h2 style="text-align:center"> Checkout </h2>
 
     <?php
