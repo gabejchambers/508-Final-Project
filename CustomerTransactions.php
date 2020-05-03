@@ -25,7 +25,6 @@
     ?>
 
     <h2>Your Transactions</h2>
-    <p>Your account information is below:</p>
     <br>
 
     <?php
