@@ -15,6 +15,14 @@ $bq_num = $_POST['q_val'];
 
 ?>
 
+    <?php
+    $store = "select SID from Store where branch_name = '".$store."'";
+    $st_rs = $conn->prepare($st_sql);
+    $st_rs->execute();
+    $st_result = $st_rs->get_result();
+    ?>
+
+
     <?php if(isset($_SESSION['c_loggedin'])){
         ?>
         <form method="POST" action="Logout.php">
