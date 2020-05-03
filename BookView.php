@@ -36,8 +36,7 @@ $book_v = $_POST['book_val'];
     else{
         $bg_sql = "SELECT genre FROM Book WHERE book = '".$book_v."'";
         $bg_Dat = mysqli_query($conn,$bg_sql);
-        $bg_row = mysqli_num_rows($bg_Dat);
-        if($bg_row == 1){
+        if (mysqli_num_rows($bg_Dat) == 1){
             $row = mysqli_fetch_assoc($bg_Dat);
             $bg_def = $row['genre'];
         }
