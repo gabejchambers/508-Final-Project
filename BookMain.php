@@ -16,7 +16,7 @@
     </form>
     <br>
 <?php } else { ?>
-    <form method="POST" action="Index.php">
+    <form method="POST" action="index.php">
         <input type="submit" value="Index">
     </form>
     <br>
