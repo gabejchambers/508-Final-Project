@@ -11,8 +11,8 @@
     session_start();
     $store = $_POST['sid_val'];
     $book_b = $_POST['book_val'];
-    $bq_num = $_POST['q_val']
-
+    $bq_num = $_POST['q_val'];
+    echo $_POST['sid_val'];
     ?>
 
     <?php if(isset($_SESSION['c_loggedin'])){
