@@ -35,19 +35,19 @@ $book_b = $_POST['book_val'];
         <h4>select store location id</h4>
         <?php
 //only where book is available
-        $st_sql = "select branch_name from Store";
+        $st_sql = "select SID from Store";
         $st_rs = $conn->prepare($st_sql);
         $st_rs->execute();
         $st_result = $st_rs->get_result();
         ?>
 
-        <form method="POST" action="BookView.php" id="branch_nameList">
+        <form method="POST" action="BookView.php" id="sidList">
             <label for="storeID">Select Store ID</label>
-            <select name="branch_name_val" id="branch_name_val" form="branch_nameList">
+            <select name="sid_val" id="sid_val" form="sidList">
             <?php
                 while($row = $st_result->fetch_assoc())
                 {
-                    $s_id = $row['branch_name'];
+                    $s_id = $row['SID'];
                     echo "<option value='" . $s_id . "'>" . $s_id . "</option>";
                 }
                 ?>
