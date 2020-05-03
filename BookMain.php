@@ -37,7 +37,7 @@
     <div>
         <?php
         if (isset($_POST["view"])) {
-            $sql = "SELECT * FROM Book";
+            $sql = "SELECT a.name, b.ISBN, b.title, b.genre, b.price, b.publisher  FROM Book b, Author a where b.ISBN = a.book";
             $viewDat = mysqli_query($conn,$sql);
 
             if(mysqli_num_rows($viewDat) > 0){
@@ -47,6 +47,7 @@
                     echo "<button type='submit' style='border:0; background-color: transparent; color: royalblue; text-decoration: underline;'> 
                             ISBN: " . $row["ISBN"] . "  Title: " . $row["title"] . "</button>";
                     echo "</form>";
+                    echo "Author: " . $row["name"] . "<br>";
                     echo "  Genre: " . $row["genre"] . "<br>" . "  Price: " . $row["price"] . "  Publisher: " . $row["publisher"] . "<br>";
                 }
             } else {
