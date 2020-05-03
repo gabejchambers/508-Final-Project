@@ -30,7 +30,19 @@ $book_v = $_POST['book_val'];
     }
     ?>
 
-
+    <?php if (isset($_POST['genre'])){
+        $bg_def = $_POST['genre'];
+    }
+    else{
+        $bg_sql = "SELECT genre FROM Book WHERE book = '".$book_v."'";
+        $bg_Dat = mysqli_query($conn,$bg_sql);
+        $bg_row = mysqli_num_rows($bg_Dat);
+        if($bg_row == 1){
+            $row = mysqli_fetch_assoc($bg_Dat);
+            $bg_def = $row['genre'];
+        }
+    }
+    ?>
 
     <?php if(isset($_SESSION['c_loggedin'])){
         ?>
@@ -103,9 +115,37 @@ $book_v = $_POST['book_val'];
         echo "<input type='hidden' value='" .$book_v."' name='book_val'>";
         echo "<input type='hidden' value='" .$store."' name='sid_val'>";
         ?>
-        <input type="submit" value="View other titles!">
+        <input type="submit" name="vs_submit" value="View other titles!">
     </form>
     <br>
+
+    <?php
+    if (isset($_POST['vs_submit'])) {
+        $sql = "SELECT * FROM Inventory WHERE store = '" . $store . "'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $vs_sql = "SELECT * FROM Book b, Inventory i WHERE i.store = '" . $store . "' and i.quantity > 0 and b.genre LIKE '" . $bg_def . "'";
+        $vs_Dat = mysqli_query($conn, $vs_sql);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc() and $vs_row = mysqli_fetch_assoc($bg_Dat)) {
+                echo "<form method='POST' action='BookView.php'>";
+                echo "<input type='hidden' value='" . $store . "' name='sid_val'>";
+                echo "<input type='hidden' value='" . $vs_row['ISBN'] . "' name='book_val'>";
+                echo "<input type='hidden' value='" . $vs_row['quantity'] . "' name='q_val'>";
+                echo "<button type='submit' style='border:0; background-color: transparent; color: royalblue; text-decoration: underline;'> 
+                            ISBN: " . $vs_row["ISBN"] . "  Title: " . $vs_row["title"] . "</button>" . "<br>";
+                echo "</form>";
+                echo "       # in Stock: " . $vs_row["quantity"] . "  Price: " . $vs_row['price'] . "<br>";
+                echo "<br>";
+
+            }
+        }
+    }
+    ?>
+
 
     <?php
     mysqli_close($conn)
