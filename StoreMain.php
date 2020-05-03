@@ -110,7 +110,7 @@ $store = $_POST['sid_val'];
         return $data;
     }
     ?>
-    
+
     <h4>Local search</h4>
     <form method="post" action="StoreMain.php">
         <?php
