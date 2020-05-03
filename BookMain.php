@@ -4,9 +4,24 @@
     <title>Book Info</title>
 </head>
 <body>
-<form method="POST" action="index.php">
-    <input type="submit" value="Index">
-</form>
+
+<?php if(isset($_SESSION['c_loggedin'])){
+    ?>
+    <form method="POST" action="Logout.php">
+        <input type="submit" value="Logout">
+    </form>
+    <br>
+    <form method="POST" action="CustomerHome.php">
+        <input type="submit" value="Home">
+    </form>
+    <br>
+<?php } else { ?>
+    <form method="POST" action="Index.php">
+        <input type="submit" value="Index">
+    </form>
+    <br>
+<?php } ?>
+
 <div>
     <?php
     include_once 'dbconnect.php';
