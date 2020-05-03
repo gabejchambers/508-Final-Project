@@ -5,7 +5,6 @@
 </head>
 <body>
 
-<h2>Example Templates:</h2>
 <div>
     <?php
     include_once 'dbconnect.php';
@@ -43,44 +42,6 @@
     <?php } ?>
 </div>
 
-<br>
-<div>Find emp name from emp id and open in new page (ex 1111 is valid id):</div>
-<form method="post" name="form" action="findemp.php">
-    <input type="text" placeholder="Enter Employee ID" name="id_in">
-    <input type="submit" value="Search">
-</form>
-<br>
-
-<div>Find emp name from emp id and display in this page:</div>
-<form method="post" name="form" action="index.php">
-    <input type="text" placeholder="Enter Employee ID" name="id_in_same">
-    <input type="submit" value="Search">
-</form>
-
-<div>
-    <?php
-    if (isset($_POST['id_in_same'])) {
-        $idin = $_POST['id_in_same'];
-
-
-        #Query w php and php variable:
-        #WARNING: not injection safe, see CistomerSignUp.php for that
-        $sql = "SELECT name FROM Employee WHERE EID = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $idin);
-        $stmt->execute();
-        $result = $stmt->get_result(); // get the mysqli result
-        if ($result->num_rows > 0) {
-            // output data of each row
-            while ($row = $result->fetch_assoc()) {
-                echo "Name: " . $row["name"] . "<br>";
-            }
-        } else {
-            echo "0 results";
-        }
-    }
-    ?>
-</div>
 
 <br><br>
 <div>Real functionality starts here:</div> <!--#####################################################################-->
