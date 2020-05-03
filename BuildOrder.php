@@ -74,6 +74,7 @@
             <?php
             echo "<input type='hidden' value='" .$book_b."' name='book_val'>";
             echo "<input type='hidden' value='" .$store."' name='sid_val'>";
+            echo "<input type='hidden' value='" .$bq_num."' name='q_val'>";
             echo "# of copies: <input type='number' name='buy_q' max='".$bq_num."' min='1'>";
 
             ?>
