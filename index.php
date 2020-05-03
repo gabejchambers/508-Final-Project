@@ -45,7 +45,6 @@
 
 <h2>Customer Login</h2>
 
-
 <?php
 #this function makes sure you dont do sql injections
 function test_input($data)
@@ -58,7 +57,7 @@ function test_input($data)
 ?>
 
 <form action="CustomerAuthentification.php" method="post">
-    <input type="text" name="email" value="" placeholder="Email ex test">
+    <input type="text" name="email" value="" placeholder="Email ex jsmith@email.com">
     <input type="password" name="c_pw" value="" placeholder="Password ex test">
     <button type="submit" name="c_submit">Submit</button>
 </form>
