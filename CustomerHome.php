@@ -62,6 +62,10 @@
     <form method="POST" action="BookMain.php">
         <input type="submit" value="View or find books!">
     </form>
+    <br>
+    <form method="POST" action="CustomerTransactions.php">
+        <input type="submit" value="My Orders">
+    </form>
 
     <?php
     mysqli_close($conn);

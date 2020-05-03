@@ -9,18 +9,11 @@
 #phpinfo();
 include_once 'dbconnect.php';
 session_start();
-$branch = $_POST['branch_name_val'];
+$store = $_POST['sid_val'];
 $book_v = $_POST['book_val'];
 
 ?>
 
-    <?php
-    $st_sql = "select SID from Store where branch_name LIKE '".$branch."'";
-    $result = $conn->query($st_sql);
-    $row = $result->fetch_assoc();
-    $store = $row["SID"];
-    $_POST['sid_val'] = $store;
-    ?>
 
 
     <?php if (isset($_POST['q_val'])){

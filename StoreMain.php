@@ -4,17 +4,31 @@
     <div>Store Home</div>
 </head>
 <body>
-<form method="POST" action="index.php">
-    <input type="submit" value="Index">
-</form>
 <div>
 <?php
 #phpinfo();
 include_once 'dbconnect.php';
 session_start();
 $store = $_POST['sid_val'];
-
 ?>
+
+    <?php if(isset($_SESSION['c_loggedin'])){
+        ?>
+        <form method="POST" action="Logout.php">
+            <input type="submit" value="Logout">
+        </form>
+        <br>
+        <form method="POST" action="CustomerHome.php">
+            <input type="submit" value="Home">
+        </form>
+        <br>
+    <?php } else { ?>
+        <form method="POST" action="index.php">
+            <input type="submit" value="Index">
+        </form>
+        <br>
+    <?php } ?>
+
     <h2 style="text-align:center">Viewing Store Number: <?php echo "$store" ?>!</h2>
 
     <br>
@@ -34,7 +48,7 @@ $store = $_POST['sid_val'];
     $row_m = mysqli_fetch_assoc($m_name);
     if ($result_s->num_rows == 1) {
         while ($row = $result_s->fetch_assoc()) {
-            echo "Store: " . $row["SID"] . "<br>" . "Address: " . $row["address"] . "<br>" . "Manager: " . $row_m["name"];
+            echo "Branch: " . $row["branch_name"] . "<br>" . "Store ID: " . $row["SID"] . "<br>" . "Address: " . $row["address"] . "<br>" . "Manager: " . $row_m["name"];
         }
     } else {
         //temporary
@@ -45,10 +59,6 @@ $store = $_POST['sid_val'];
     <br>
 
 
-    <h3 style="text-align: left">inventory by location</h3>
-    <br>
-    <h4>View all</h4>
-    <br>
     <form method="post" action="StoreMain.php">
         <?php
         echo "<input type='hidden' value='" .$store."' name='sid_val'>";
@@ -101,10 +111,7 @@ $store = $_POST['sid_val'];
     }
     ?>
 
-    <br>
-    <br>
     <h4>Local search</h4>
-    <br>
     <form method="post" action="StoreMain.php">
         <?php
         echo "<input type='hidden' value='" .$store."' name='sid_val'>";
