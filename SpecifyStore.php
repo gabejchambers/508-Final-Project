@@ -20,6 +20,7 @@ $book_b = $_POST['book_val'];
     <div>
         <h4>select store location id</h4>
         <?php
+//only where book is available
         $st_sql = "select SID from Store";
         $st_rs = $conn->prepare($st_sql);
         $st_rs->execute();

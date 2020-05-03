@@ -64,8 +64,6 @@
             ?>
                 Name: <input type='text'>
                 <br><br>
-                E-mail: <input type='text' name='email'>
-                <br><br>
                 Address: <input type='text'>
                 <br><br>
             <?php
@@ -75,7 +73,7 @@
             echo "<input type='hidden' value='" .$book_b."' name='book_val'>";
             echo "<input type='hidden' value='" .$store."' name='sid_val'>";
             echo "<input type='hidden' value='" .$bq_num."' name='q_val'>";
-            echo "# of copies: <input type='number' name='buy_q' max='".$bq_num."' min='1'>";
+            #echo "# of copies: <input type='number' name='buy_q' max='".$bq_num."' min='1'>";
 
             ?>
             <input type="submit" name="submit_o" value="Submit Order">
@@ -85,29 +83,34 @@
     <div>
         <?php
         if (isset($_POST['submit_o']))
-            $num_ord = $_POST['buy_q'];
-            $new_q = $bq_num - $num_ord;
+            #$num_ord = $_POST['buy_q'];
+            #$new_q = $bq_num - $num_ord;
             $t_id = rand(3000,3999);
 
             if(isset($_SESSION['c_loggedin'])){
                 $email = $_SESSION['c_email'];
+                $ct_sql = "INSERT INTO Transaction (TID, customer) VALUES ('".$t_id."', '".$email."')";
+                if(mysqli_query($conn, $ct_sql)) {
+                    echo "test transaction query";
+                } else {
+                echo " transaction Error: " . $ct_sql . "<br>" . mysqli_error($conn);
+                }
             }
             else{
-                $email = $_POST['email'];
-            }
+                $t_sql = "INSERT INTO Transaction ( TID ) VALUES ('".$t_id."')";
+                if(mysqli_query($conn, $t_sql)) {
+                    echo "test transaction query";
+                } else {
+                    echo " transaction Error: " . $t_sql . "<br>" . mysqli_error($conn);
+                }
 
-            $t_sql = "INSERT INTO Transaction (TID, customer) VALUES ('".$t_id."', '".$email."')";
-            if(mysqli_query($conn, $t_sql)) {
-                echo "test transaction query";
-            } else {
-                echo " transaction Error: " . $t_sql . "<br>" . mysqli_error($conn);
             }
 
 
             $m_sql = "UPDATE Merchandise SET book = '".$book_b."' WHERE transaction = '".$t_id."'";
             if(mysqli_query($conn, $m_sql)) {
                 echo "test merch query";
-                $i_sql = "UPDATE Inventory SET quantity = '".$new_q."' WHERE store ='".$store."' and book = '".$book_b."'";
+                $i_sql = "UPDATE Inventory SET quantity = '".$bq_num."-1' WHERE store ='".$store."' and book = '".$book_b."'";
                 if(mysqli_query($conn, $i_sql)) {
                     echo "test inventory update";
                 } else {
