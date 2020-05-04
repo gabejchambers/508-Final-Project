@@ -164,6 +164,37 @@ $store = $_POST['sid_val'];
     <br>
     <br>
 
+    <div>Return Book</div>
+    <br>
+    <form method="post" action="StoreMain.php">
+        <button type="submit" name="return">Select book to Return</button>
+    </form>
+    <br>
+    <div>
+        <?php
+        if (isset($_POST["return"])) {
+            $r_sql = "SELECT a.name, b.ISBN, b.title, i.quantity FROM Book b, Author a, Inventory i WHERE b.ISBN = a.book and b.ISBN = i.book and i.store = '".$store."'";
+            $view_r = mysqli_query($conn,$sql);
+
+            if(mysqli_num_rows($view_r) > 0){
+                while ($row = mysqli_fetch_array($view_r)) {
+                    echo "<form method='POST' action='ReturnBook.php'>";
+                    echo "<input type='hidden' value='" . $store . "' name='sid_val'>";
+                    echo "<input type='hidden' value='" .$row['quantity']. "' name='q_val'>";
+                    echo "<input type='hidden' value='" .$row['ISBN']."' name='book_val'>";
+                    echo "<button type='submit' style='border:0; background-color: transparent; color: royalblue; text-decoration: underline;'> 
+                            ISBN: " . $row["ISBN"] . "  Title: " . $row["title"] . "</button>" . "<br>";
+                    echo "</form>";
+                    echo "   Author: " . $row["name"] . "<br>";
+                }
+            } else {
+                echo "No books";
+            }
+
+        }
+        ?>
+    </div>
+
     <?php
     mysqli_close($conn)
     ?>
