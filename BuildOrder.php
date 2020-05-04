@@ -104,7 +104,7 @@
             #echo "# of copies: <input type='number' name='buy_q' max='".$bq_num."' min='1'>";
 
             ?>
-            <input type="submit" name="submit_o" value="Submit Order">
+            <button type="submit" name="submit_o" onclick="alert('Order Successful!')">Submit Order</button>
         </form>
     </div>
 
@@ -136,6 +136,7 @@
 
             $m_sql = "UPDATE Merchandise SET book = '".$book_b."' WHERE book IS NULL";
             if(mysqli_query($conn, $m_sql)) {
+
                 //echo "test merch query";
                 $bq_num -= 1;
                 $i_sql = "UPDATE Inventory SET quantity = '".$bq_num."' WHERE store ='".$store."' and book = '".$book_b."'";
