@@ -122,16 +122,16 @@ $book_v = $_POST['book_val'];
 
     <?php
     if (isset($_POST['vs_submit'])) {
-        $sql = "SELECT * FROM Inventory WHERE store = '" . $store . "'";
-        $stmt = $conn->prepare($sql);
+        $inv_sql = "SELECT * FROM Inventory WHERE store = '".$store."'";
+        $stmt = $conn->prepare($inv_sql);
         $stmt->execute();
-        $result = $stmt->get_result();
+        $inv_result = $stmt->get_result();
 
-        $vs_sql = "SELECT * FROM Book b, Inventory i WHERE i.store = '" . $store . "' and i.quantity > 0 and b.genre LIKE '" . $bg_def . "'";
+        $vs_sql = "SELECT * FROM Book b, Inventory i WHERE b.ISBN = i.book and i.store = '".$store."' and i.quantity > 0 and b.genre LIKE '".$bg_def."'";
         $vs_Dat = mysqli_query($conn, $vs_sql);
 
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc() and $vs_row = mysqli_fetch_assoc($bg_Dat)) {
+        if ($inv_result->num_rows > 0) {
+            while ($row = $inv_result->fetch_assoc() and $vs_row = mysqli_fetch_assoc($vs_Dat)) {
                 echo "<form method='POST' action='BookView.php'>";
                 echo "<input type='hidden' value='" . $store . "' name='sid_val'>";
                 echo "<input type='hidden' value='" . $vs_row['ISBN'] . "' name='book_val'>";
