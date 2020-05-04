@@ -102,16 +102,8 @@
             echo "<input type='hidden' value='" .$store."' name='sid_val'>";
             echo "<input type='hidden' value='" .$bq_num."' name='q_val'>";
             #echo "# of copies: <input type='number' name='buy_q' max='".$bq_num."' min='1'>";
-
             ?>
-            <button type="submit" name="submit_o" onclick="alert('Order Successful! Return to Store!')">Submit Order
-                <form method="POST" action="StoreMain.php">
-                    <?php
-                    echo "<input type='hidden' value='" .$store."' name='sid_val'>";
-                    ?>
-                    <input type="submit" value="" style="display: none">
-                </form>
-            </button>
+            <button type="submit" name="submit_o" onclick="alert('Order Successful! Return to Store!')">Submit Order</button>
         </form>
     </div>
 
