@@ -116,7 +116,7 @@ $book_v = $_POST['book_val'];
         echo "<input type='hidden' value='" .$book_v."' name='book_val'>";
         echo "<input type='hidden' value='" .$store."' name='sid_val'>";
         ?>
-        <button type="submit" name="vs_submit" value="View other titles!">
+        <button type="submit" name="vs_submit">Click to view!</button>
     </form>
     <br>
 
