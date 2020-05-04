@@ -20,7 +20,7 @@
     <div>
         <h4>select store location id</h4>
         <?php
-        $st_sql = "select SID, branch_name from Store";
+        $st_sql = "select SID, branch_name from Store s, Inventory i WHERE s.SID = i.store and i.book = '".$book_b."' and i.quantity > 0";
         $st_rs = $conn->prepare($st_sql);
         $st_rs->execute();
         $st_result = $st_rs->get_result();
