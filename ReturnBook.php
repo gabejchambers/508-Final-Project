@@ -8,7 +8,6 @@
     session_start();
     $store = $_POST['sid_val'];
     $book_b = $_POST['book_val'];
-    $q_in = $_POST['q_val']
 
     ?>
 
@@ -93,7 +92,7 @@
             if(mysqli_query($conn, $i_sql)) {
                 echo "success";
             } else{
-                echo " invetory return Error: " . $i_sql . "<br>" . mysqli_error($conn);
+                echo " inventory return Error: " . $i_sql . "<br>" . mysqli_error($conn);
             }
         }
         ?>

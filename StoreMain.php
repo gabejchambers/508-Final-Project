@@ -10,6 +10,7 @@
 include_once 'dbconnect.php';
 session_start();
 $store = $_POST['sid_val'];
+
 ?>
 
     <?php if(isset($_SESSION['c_loggedin'])){
@@ -167,20 +168,22 @@ $store = $_POST['sid_val'];
     <div>Return Book</div>
     <br>
     <form method="post" action="StoreMain.php">
+        <?php
+        echo "<input type='hidden' value='" .$store."' name='sid_val'>";
+        ?>
         <button type="submit" name="return">Select book to Return</button>
     </form>
     <br>
     <div>
         <?php
         if (isset($_POST["return"])) {
-            $r_sql = "SELECT a.name, b.ISBN, b.title, i.quantity FROM Book b, Author a, Inventory i WHERE b.ISBN = a.book and b.ISBN = i.book and i.store = '".$store."'";
+            $r_sql = "SELECT a.name, b.ISBN, b.title FROM Book b, Author a where b.ISBN = a.book";
             $view_r = mysqli_query($conn,$r_sql);
 
             if(mysqli_num_rows($view_r) > 0){
                 while ($row = mysqli_fetch_array($view_r)) {
                     echo "<form method='POST' action='ReturnBook.php'>";
                     echo "<input type='hidden' value='" . $store . "' name='sid_val'>";
-                    echo "<input type='hidden' value='" .$row['quantity']. "' name='q_val'>";
                     echo "<input type='hidden' value='" .$row['ISBN']."' name='book_val'>";
                     echo "<button type='submit' style='border:0; background-color: transparent; color: royalblue; text-decoration: underline;'> 
                             ISBN: " . $row["ISBN"] . "  Title: " . $row["title"] . "</button>" . "<br>";
