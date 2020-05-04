@@ -174,7 +174,7 @@ $store = $_POST['sid_val'];
         <?php
         if (isset($_POST["return"])) {
             $r_sql = "SELECT a.name, b.ISBN, b.title, i.quantity FROM Book b, Author a, Inventory i WHERE b.ISBN = a.book and b.ISBN = i.book and i.store = '".$store."'";
-            $view_r = mysqli_query($conn,$sql);
+            $view_r = mysqli_query($conn,$r_sql);
 
             if(mysqli_num_rows($view_r) > 0){
                 while ($row = mysqli_fetch_array($view_r)) {
