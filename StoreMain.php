@@ -74,21 +74,22 @@ $store = $_POST['sid_val'];
             $vw_stmt->execute();
             $result_v = $vw_stmt->get_result();
 
-            $b_sql = "SELECT * FROM Book b, Inventory i WHERE b.ISBN = i.book and i.store = '".$store."'";
+            $b_sql = "SELECT * FROM Book b, Inventory i, Author a WHERE b.ISBN = i.book AND b.ISBN = a.book AND i.store = '".$store."' AND i.quantity > 0";
+           // $b_sql = "SELECT * FROM Book b, Inventory i WHERE b.ISBN = i.book and i.store = '".$store."'";
             $b_Dat = mysqli_query($conn,$b_sql);
            // $b_row = mysqli_fetch_array($b_Dat);
 
-            if($result_v->num_rows > 0){
-                while ($row = $result_v->fetch_assoc() and $b_row = mysqli_fetch_assoc($b_Dat)) {
+            if(mysqli_num_rows($b_Dat) > 0){
+                while (/*$row = $result_v->fetch_assoc() and */$b_row = mysqli_fetch_assoc($b_Dat)) {
                     echo "<form method='POST' action='BookView.php'>";
                     echo "<input type='hidden' value='" .$store."' name='sid_val'>";
                     echo "<input type='hidden' value='" .$b_row['ISBN']."' name='book_val'>";
-                    echo "<input type='hidden' value='" .$row['quantity']."' name='q_val'>";
+                    echo "<input type='hidden' value='" .$b_row['quantity']."' name='q_val'>";
                     echo "<button type='submit' style='border:0; background-color: transparent; color: royalblue; text-decoration: underline;'> 
-                            ISBN: " . $b_row["ISBN"] . "  Title: " . $b_row["title"] . "</button>";
+                            ISBN: " . $b_row["ISBN"] . "  Title: " . $b_row["title"] . "</button>" . "<br>";
                     echo "</form>";
-                    echo "    Genre: " . $b_row["genre"] . "<br>";
-                    echo "       # in Stock: " . $row["quantity"] . "  Price: " . $b_row['price'] . "<br>";
+                    echo "    Author: " .$b_row['name']."  Genre: " . $b_row["genre"] . "<br>";
+                    echo "       # in Stock: " . $b_row["quantity"] . "  Price: " . $b_row['price'] . "<br>";
                     echo "<br>";
 
                 }
