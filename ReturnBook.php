@@ -11,6 +11,22 @@
 
     ?>
 
+
+    <?php
+    if (isset($_POST['q_val'])){
+        $q_in = $_POST['q_val'];
+    }
+    else{
+        $bq_sql = "SELECT quantity FROM Inventory WHERE store = '".$store."' and book = '".$book_b."'";
+        $bq_Dat = mysqli_query($conn,$bq_sql);
+        $br_row = mysqli_num_rows($bq_Dat);
+        if($br_row == 1){
+            $row = mysqli_fetch_assoc($bq_Dat);
+            $q_in = $row['quantity'];
+        }
+    }
+    ?>
+
     <?php if(isset($_SESSION['c_loggedin'])){
         ?>
         <form method="POST" action="Logout.php">
@@ -61,7 +77,7 @@
             echo "<input type='hidden' value='" .$q_in."' name='q_val'>";
             #echo "# of copies: <input type='number' name='buy_q' max='".$bq_num."' min='1'>";
             ?>
-            <button type="submit" name="submit_ret" onclick="alert('Return Successful!')">Submit Order</button>
+            <button type="submit" name="submit_ret" onclick="alert('Return Successful!')">Submit Return</button>
         </form>
     </div>
 
